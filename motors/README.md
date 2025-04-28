@@ -18,7 +18,7 @@ This sample project is based on the knowledge base article here: https://support
         "type": "git",
         "deployFile": "motors/motors.json",
         "repoName": "highbyte-samples",
-        "ref": "test"
+        "ref": "main"
       },
       "keyPaths": []
     }
