@@ -24,7 +24,7 @@ This repo includes sample projects to get started with the Intelligence Hub. To 
         "type": "git",
         "deployFile": "deployment.json",
         "repoName": "highbyte-samples",
-        "ref": "test"
+        "ref": "main"
       },
       "keyPaths": []
     }
