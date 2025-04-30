@@ -22,7 +22,7 @@ This repo includes sample projects to get started with the Intelligence Hub. To 
     {
       "details": {
         "type": "git",
-        "deployFile": "deployment.json",
+        "deployFile": "path/to/file.json",
         "repoName": "highbyte-samples",
         "ref": "main"
       },
@@ -40,6 +40,6 @@ This repo includes sample projects to get started with the Intelligence Hub. To 
 
 3. Open the start-windows.bat (or start-linux.bat), find the java command, and add in the **highbyte.deployment.file** java option to point to the deployment.json file like so 
 ```
-java !JAVA_OPTS! -Dhighbyte.deployment.file="deployments.json" -jar intelligencehub-runtime.jar start
+java !JAVA_OPTS! -Dhighbyte.deployment.file="deployment.json" -jar intelligencehub-runtime.jar start
 ```
 4. Launch the start bat file. The runtime will load and start with the project
