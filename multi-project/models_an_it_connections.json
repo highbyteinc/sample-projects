@@ -1,1 +1,157 @@
-
+{
+	"productInfo": {
+		"company": "HighByte",
+		"product": "IntelligenceHub",
+		"version": "4.2.0",
+		"build": "2025.6.27.332",
+		"stage": "Release"
+	},
+	"project": {
+		"version": 11,
+		"connections": [
+			{
+				"name": "mqtt",
+				"uri": "mqtt://0.0.0.0:1885",
+				"tags": [
+					"starter_solution"
+				],
+				"writes": {
+					"flattenModeledValues": false
+				},
+				"subscriptions": {},
+				"storeForward": {
+					"enabled": false,
+					"maxEntries": 100,
+					"waitOnFailureInterval": {
+						"duration": 1,
+						"units": "Seconds"
+					}
+				},
+				"settings": {
+					"connectionTimeoutSeconds": 10,
+					"keepAliveSeconds": 60,
+					"requestTimeoutMS": 5000,
+					"cleanSession": true,
+					"clientId": "mqtt",
+					"ssl": false,
+					"redundantBrokers": [],
+					"inputDiscovery": ""
+				}
+			}
+		],
+		"inputs": [],
+		"outputs": [],
+		"modeling": {
+			"models": [
+				{
+					"name": "motors",
+					"tags": [
+						"starter_solution"
+					],
+					"attributes": [
+						{
+							"attributeType": "Internal",
+							"name": "motorId",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"internalType": "Any"
+						},
+						{
+							"attributeType": "Internal",
+							"name": "site",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"internalType": "Any"
+						},
+						{
+							"attributeType": "Internal",
+							"name": "area",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"internalType": "Any"
+						},
+						{
+							"attributeType": "Internal",
+							"name": "line",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"internalType": "Any"
+						},
+						{
+							"attributeType": "Internal",
+							"name": "amps",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"internalType": "Any"
+						},
+						{
+							"attributeType": "Internal",
+							"name": "speed",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"internalType": "Any"
+						},
+						{
+							"attributeType": "Internal",
+							"name": "vibration",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"internalType": "Any"
+						},
+						{
+							"attributeType": "Internal",
+							"name": "error",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"internalType": "Any"
+						},
+						{
+							"attributeType": "Internal",
+							"name": "lastServiceDate",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"internalType": "DateTime"
+						},
+						{
+							"attributeType": "Internal",
+							"name": "lastServiceNotes",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"internalType": "Any"
+						}
+					]
+				}
+			],
+			"instances": []
+		},
+		"conditions": [],
+		"functions": [
+			{
+				"name": "functions",
+				"description": "",
+				"function": ""
+			}
+		],
+		"tags": [
+			{
+				"name": "starter_solution"
+			}
+		],
+		"pipelines": [],
+		"namespace": []
+	},
+	"network": {
+		"groups": [],
+		"hubs": []
+	}
+}
