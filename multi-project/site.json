@@ -1,1 +1,442 @@
-
+{
+	"productInfo": {
+		"company": "HighByte",
+		"product": "IntelligenceHub",
+		"version": "4.2.0",
+		"build": "2025.6.27.332",
+		"stage": "Release"
+	},
+	"project": {
+		"version": 11,
+		"connections": [
+			{
+				"name": "opc",
+				"uri": "opc.tcp://52.10.6.4:49320",
+				"tags": [
+					"starter_solution"
+				],
+				"writes": {
+					"flattenModeledValues": false
+				},
+				"subscriptions": {
+					"subscriptionRate": {
+						"duration": 1,
+						"units": "Seconds"
+					}
+				},
+				"storeForward": {
+					"enabled": false,
+					"maxEntries": 100,
+					"waitOnFailureInterval": {
+						"duration": 1,
+						"units": "Seconds"
+					}
+				},
+				"settings": {
+					"security": "None",
+					"authentication": {
+						"type": "Anonymous"
+					},
+					"connectTimeoutSeconds": 5,
+					"requestTimeoutMS": 5000,
+					"maxItemsPerRead": 512,
+					"maxItemsPerWrite": 256,
+					"sessionName": ""
+				}
+			},
+			{
+				"name": "sql",
+				"uri": "jdbc.sqlserver://52.10.6.4:1433",
+				"tags": [
+					"starter_solution"
+				],
+				"writes": {
+					"flattenModeledValues": false
+				},
+				"subscriptions": {},
+				"storeForward": {
+					"enabled": false,
+					"maxEntries": 100,
+					"waitOnFailureInterval": {
+						"duration": 1,
+						"units": "Seconds"
+					}
+				},
+				"settings": {
+					"database": "serviceinfo",
+					"username": "highbyte",
+					"password": {
+						"type": "Encrypted",
+						"value": {
+							"keyId": "gcqkahr8pj+67AXASPb5dw==",
+							"iv": "oXPQ/hkNS2gm/U6bgh9qhA==",
+							"ciphertext": "RzPQmgwlQZJrf3Y+q0yDtw=="
+						}
+					},
+					"strategy": {
+						"type": "default"
+					}
+				}
+			}
+		],
+		"inputs": [
+			{
+				"name": "Motor001_PLC_Amps",
+				"connection": "opc",
+				"type": "opc.tcp",
+				"qualifier": {
+					"namespaceIndex": 2,
+					"identifierType": "String",
+					"identifier": "Motor001.PLC.Amps",
+					"type": "Tag",
+					"dataType": "UInt32",
+					"samplingInterval": {
+						"duration": 0,
+						"units": "Seconds"
+					}
+				},
+				"cacheLifetime": {
+					"enabled": false
+				},
+				"template": {
+					"type": "Off"
+				},
+				"parameters": {
+					"type": "EmptyParameters"
+				}
+			},
+			{
+				"name": "Motor001_PLC_Error",
+				"connection": "opc",
+				"type": "opc.tcp",
+				"qualifier": {
+					"namespaceIndex": 2,
+					"identifierType": "String",
+					"identifier": "Motor001.PLC.Error",
+					"type": "Tag",
+					"dataType": "String"
+				},
+				"cacheLifetime": {
+					"enabled": false
+				},
+				"template": {
+					"type": "Off"
+				},
+				"parameters": {
+					"type": "EmptyParameters"
+				}
+			},
+			{
+				"name": "Motor001_PLC_Speed",
+				"connection": "opc",
+				"type": "opc.tcp",
+				"qualifier": {
+					"namespaceIndex": 2,
+					"identifierType": "String",
+					"identifier": "Motor001.PLC.Speed",
+					"type": "Tag",
+					"dataType": "UInt32"
+				},
+				"cacheLifetime": {
+					"enabled": false
+				},
+				"template": {
+					"type": "Off"
+				},
+				"parameters": {
+					"type": "EmptyParameters"
+				}
+			},
+			{
+				"name": "Motor001_PLC_Vibration",
+				"connection": "opc",
+				"type": "opc.tcp",
+				"qualifier": {
+					"namespaceIndex": 2,
+					"identifierType": "String",
+					"identifier": "Motor001.PLC.Vibration",
+					"type": "Tag",
+					"dataType": "Real64"
+				},
+				"cacheLifetime": {
+					"enabled": false
+				},
+				"template": {
+					"type": "Off"
+				},
+				"parameters": {
+					"type": "EmptyParameters"
+				}
+			},
+			{
+				"name": "get_motor001_service_info",
+				"connection": "sql",
+				"type": "jdbc.sqlserver",
+				"qualifier": {
+					"type": "query",
+					"query": "SELECT * FROM [dbo].[lastservice] WHERE [dbo].[lastservice].[machineid] = 'motor001'",
+					"index": {
+						"enabled": false,
+						"indexName": "",
+						"indexValue": ""
+					}
+				},
+				"cacheLifetime": {
+					"enabled": false
+				},
+				"template": {
+					"type": "Off"
+				},
+				"parameters": {
+					"type": "EmptyParameters"
+				}
+			}
+		],
+		"outputs": [],
+		"modeling": {
+			"models": [],
+			"instances": [
+				{
+					"name": "motor001",
+					"tags": [
+						"starter_solution"
+					],
+					"model": "motors",
+					"rootValueAs": "Object",
+					"template": {
+						"type": "Off"
+					},
+					"executeMode": "V4",
+					"initExpression": "",
+					"attributes": [
+						{
+							"name": "motorId",
+							"expression": {
+								"type": "Reference",
+								"reference": {
+									"type": "Empty",
+									"name": "",
+									"params": {},
+									"path": ""
+								}
+							},
+							"defaultValue": "motor001"
+						},
+						{
+							"name": "site",
+							"expression": {
+								"type": "Reference",
+								"reference": {
+									"type": "Empty",
+									"name": "",
+									"params": {},
+									"path": ""
+								}
+							},
+							"defaultValue": "Portland"
+						},
+						{
+							"name": "area",
+							"expression": {
+								"type": "Reference",
+								"reference": {
+									"type": "Empty",
+									"name": "",
+									"params": {},
+									"path": ""
+								}
+							},
+							"defaultValue": "Area-1"
+						},
+						{
+							"name": "line",
+							"expression": {
+								"type": "Reference",
+								"reference": {
+									"type": "Empty",
+									"name": "",
+									"params": {},
+									"path": ""
+								}
+							},
+							"defaultValue": "Line-1"
+						},
+						{
+							"name": "amps",
+							"expression": {
+								"type": "Reference",
+								"reference": {
+									"type": "Input",
+									"name": "Motor001_PLC_Amps",
+									"params": {},
+									"path": "",
+									"connectionName": "opc"
+								}
+							}
+						},
+						{
+							"name": "speed",
+							"expression": {
+								"type": "Reference",
+								"reference": {
+									"type": "Input",
+									"name": "Motor001_PLC_Speed",
+									"params": {},
+									"path": "",
+									"connectionName": "opc"
+								}
+							}
+						},
+						{
+							"name": "vibration",
+							"expression": {
+								"type": "Reference",
+								"reference": {
+									"type": "Input",
+									"name": "Motor001_PLC_Vibration",
+									"params": {},
+									"path": "",
+									"connectionName": "opc"
+								}
+							}
+						},
+						{
+							"name": "error",
+							"expression": {
+								"type": "Reference",
+								"reference": {
+									"type": "Input",
+									"name": "Motor001_PLC_Error",
+									"params": {},
+									"path": "",
+									"connectionName": "opc"
+								}
+							}
+						},
+						{
+							"name": "lastServiceDate",
+							"expression": {
+								"type": "Reference",
+								"reference": {
+									"type": "Input",
+									"name": "get_motor001_service_info",
+									"params": {},
+									"path": "[0].lastservicedate",
+									"connectionName": "sql"
+								}
+							}
+						},
+						{
+							"name": "lastServiceNotes",
+							"expression": {
+								"type": "Reference",
+								"reference": {
+									"type": "Input",
+									"name": "get_motor001_service_info",
+									"params": {},
+									"path": "[0].Notes",
+									"connectionName": "sql"
+								}
+							}
+						}
+					],
+					"parameters": {
+						"type": "EmptyParameters"
+					}
+				}
+			]
+		},
+		"conditions": [],
+		"functions": [],
+		"tags": [
+			{
+				"name": "starter_solution"
+			}
+		],
+		"pipelines": [
+			{
+				"name": "motor001_to_mqtt",
+				"tags": [
+					"starter_solution"
+				],
+				"inputStages": [
+					"To_MQTT"
+				],
+				"stages": [
+					{
+						"name": "To_MQTT",
+						"display": {
+							"position": {
+								"x": 240,
+								"y": 0
+							}
+						},
+						"config": {
+							"type": ".DynamicWriteConfig",
+							"failureOutputs": [],
+							"connectionReference": "{{Connection.mqtt}}",
+							"qualifier": {
+								"topic": "{{event.value.site}}/{{event.value.area}}/{{event.value.line}}/assets/motors/{{event.value.motorId}} ",
+								"qos": 0,
+								"namedRoot": false,
+								"retained": false,
+								"breakupArrays": false,
+								"filterList": [
+									"_name",
+									"_model"
+								]
+							},
+							"qualifierExpression": "",
+							"writeReturn": "ignore"
+						},
+						"outputs": []
+					}
+				],
+				"trackActivity": false,
+				"triggers": [
+					{
+						"name": "FlowTrigger",
+						"display": {
+							"position": {
+								"x": -450,
+								"y": 0
+							}
+						},
+						"config": {
+							"type": ".TriggerFlow",
+							"enabled": false,
+							"flowEvaluation": {
+								"type": "Polled",
+								"interval": {
+									"duration": 1,
+									"units": "Seconds"
+								},
+								"mode": "Always",
+								"expression": "",
+								"delay": {
+									"duration": 0,
+									"units": "Seconds"
+								}
+							},
+							"inReferences": [
+								"{{Instance.motor001}}"
+							],
+							"publishMode": "All",
+							"template": {
+								"type": "Off"
+							}
+						}
+					}
+				],
+				"errorHandler": {
+					"type": "default"
+				}
+			}
+		],
+		"namespace": []
+	},
+	"network": {
+		"groups": [],
+		"hubs": []
+	}
+}
