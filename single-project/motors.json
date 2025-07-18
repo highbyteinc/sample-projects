@@ -66,37 +66,6 @@
         "maxItemsPerWrite" : 256,
         "sessionName" : ""
       }
-    }, {
-      "name" : "sql",
-      "uri" : "jdbc.sqlserver://52.10.6.4:1433",
-      "tags" : [ "starter_solution" ],
-      "writes" : {
-        "flattenModeledValues" : false
-      },
-      "subscriptions" : { },
-      "storeForward" : {
-        "enabled" : false,
-        "maxEntries" : 100,
-        "waitOnFailureInterval" : {
-          "duration" : 1,
-          "units" : "Seconds"
-        }
-      },
-      "settings" : {
-        "database" : "serviceinfo",
-        "username" : "highbyte",
-        "password" : {
-          "type" : "Encrypted",
-          "value" : {
-            "keyId" : "gcqkahr8pj+67AXASPb5dw==",
-            "iv" : "oXPQ/hkNS2gm/U6bgh9qhA==",
-            "ciphertext" : "RzPQmgwlQZJrf3Y+q0yDtw=="
-          }
-        },
-        "strategy" : {
-          "type" : "default"
-        }
-      }
     } ],
     "inputs" : [ {
       "name" : "Motor001_PLC_Amps",
@@ -182,29 +151,7 @@
       "parameters" : {
         "type" : "EmptyParameters"
       }
-    }, {
-      "name" : "get_motor001_service_info",
-      "connection" : "sql",
-      "type" : "jdbc.sqlserver",
-      "qualifier" : {
-        "type" : "query",
-        "query" : "SELECT * FROM [dbo].[lastservice] WHERE [dbo].[lastservice].[machineid] = 'motor001'",
-        "index" : {
-          "enabled" : false,
-          "indexName" : "",
-          "indexValue" : ""
-        }
-      },
-      "cacheLifetime" : {
-        "enabled" : false
-      },
-      "template" : {
-        "type" : "Off"
-      },
-      "parameters" : {
-        "type" : "EmptyParameters"
-      }
-    } ],
+    }],
     "outputs" : [ ],
     "modeling" : {
       "models" : [ {
@@ -266,21 +213,7 @@
           "required" : false,
           "array" : false,
           "internalType" : "Any"
-        }, {
-          "attributeType" : "Internal",
-          "name" : "lastServiceDate",
-          "nullable" : false,
-          "required" : false,
-          "array" : false,
-          "internalType" : "DateTime"
-        }, {
-          "attributeType" : "Internal",
-          "name" : "lastServiceNotes",
-          "nullable" : false,
-          "required" : false,
-          "array" : false,
-          "internalType" : "Any"
-        } ]
+        }]
       } ],
       "instances" : [ {
         "name" : "motor001",
@@ -388,31 +321,7 @@
               "connectionName" : "opc"
             }
           }
-        }, {
-          "name" : "lastServiceDate",
-          "expression" : {
-            "type" : "Reference",
-            "reference" : {
-              "type" : "Input",
-              "name" : "get_motor001_service_info",
-              "params" : { },
-              "path" : "[0].lastservicedate",
-              "connectionName" : "sql"
-            }
-          }
-        }, {
-          "name" : "lastServiceNotes",
-          "expression" : {
-            "type" : "Reference",
-            "reference" : {
-              "type" : "Input",
-              "name" : "get_motor001_service_info",
-              "params" : { },
-              "path" : "[0].Notes",
-              "connectionName" : "sql"
-            }
-          }
-        } ],
+        }],
         "parameters" : {
           "type" : "EmptyParameters"
         }
