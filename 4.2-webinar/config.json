@@ -6,7 +6,7 @@
     "build" : "2025.6.27.332",
     "stage" : "Release"
   },
-  "project" : 
+  "project": { 
 		"version": 11,
 		"connections": [
 			{
