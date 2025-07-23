@@ -6,9 +6,30 @@
     "build" : "2025.6.27.332",
     "stage" : "Release"
   },
-  "project": { 
+  "project": {
 		"version": 11,
 		"connections": [
+			{
+				"name": "awsBedrock",
+				"uri": "aws.bedrock://awsBedrock",
+				"tags": [],
+				"writes": {
+					"flattenModeledValues": false
+				},
+				"subscriptions": {},
+				"storeForward": {
+					"enabled": false,
+					"maxEntries": 100,
+					"waitOnFailureInterval": {
+						"duration": 1,
+						"units": "Seconds"
+					}
+				},
+				"settings": {
+					"region": "us-west-2",
+					"endpoint": ""
+				}
+			},
 			{
 				"name": "ignition",
 				"uri": "inductive.ignition://host.docker.internal:45280",
@@ -161,6 +182,24 @@
 			}
 		],
 		"inputs": [
+			{
+				"name": "opus4",
+				"connection": "awsBedrock",
+				"type": "aws.bedrock",
+				"qualifier": {
+					"modelType": "arn:aws:bedrock:us-west-2:042452327191:inference-profile/us.anthropic.claude-opus-4-20250514-v1:0",
+					"responseFormat": "string"
+				},
+				"cacheLifetime": {
+					"enabled": false
+				},
+				"template": {
+					"type": "Off"
+				},
+				"parameters": {
+					"type": "EmptyParameters"
+				}
+			},
 			{
 				"name": "browse",
 				"connection": "ignition",
@@ -536,7 +575,7 @@
 				"connection": "timescaledb",
 				"type": "jdbc.timescaledb",
 				"qualifier": {
-					"query": "WITH columns AS (\n  SELECT\n    table_name,\n    column_name\n  FROM information_schema.columns\n  WHERE table_schema = 'public'\n    AND table_name IN ('Crusher', 'DrumDryer', 'Granulator', 'Mixer', 'Packer')\n    AND column_name != '_path'\n), paths AS (\n  SELECT DISTINCT _path, 'Crusher' AS table_name FROM \"public\".\"Crusher\"\n  UNION ALL\n  SELECT DISTINCT _path, 'DrumDryer' AS table_name FROM \"public\".\"DrumDryer\"\n  UNION ALL\n  SELECT DISTINCT _path, 'Granulator' AS table_name FROM \"public\".\"Granulator\"\n  UNION ALL\n  SELECT DISTINCT _path, 'Mixer' AS table_name FROM \"public\".\"Mixer\"\n  UNION ALL\n  SELECT DISTINCT _path, 'Packer' AS table_name FROM \"public\".\"Packer\"\n)\nSELECT\n  columns.table_name || ':' || \n  paths._path || '.' || columns.column_name AS full_path\nFROM columns\nJOIN paths ON columns.table_name = paths.table_name\nORDER BY full_path;\n"
+					"query": "WITH columns AS (\n  SELECT\n    table_name,\n    column_name\n  FROM information_schema.columns\n  WHERE table_schema = 'public'\n    AND table_name IN ('Crusher', 'DrumDryer', 'Granulator', 'Mixer', 'Packer')\n    AND column_name != '_path'\n), paths AS (\n  SELECT DISTINCT _path, 'Crusher' AS table_name FROM \"public\".\"Crusher\"\n  UNION ALL\n  SELECT DISTINCT _path, 'DrumDryer' AS table_name FROM \"public\".\"DrumDryer\"\n  UNION ALL\n  SELECT DISTINCT _path, 'Granulator' AS table_name FROM \"public\".\"Granulator\"\n  UNION ALL\n  SELECT DISTINCT _path, 'Mixer' AS table_name FROM \"public\".\"Mixer\"\n  UNION ALL\n  SELECT DISTINCT _path, 'Packer' AS table_name FROM \"public\".\"Packer\"\n)\nSELECT\n  paths._path || '.' || columns.column_name AS full_path\nFROM columns\nJOIN paths ON columns.table_name = paths.table_name\nORDER BY full_path;\n"
 				},
 				"cacheLifetime": {
 					"enabled": false
@@ -1140,7 +1179,7 @@
 						"type": "Off"
 					},
 					"executeMode": "V4",
-					"initExpression": "variables.mixer = CrusherSimulator.simulateNow(\"error\")",
+					"initExpression": "variables.mixer = CrusherSimulator.simulateNow(\"normal\")",
 					"attributes": [
 						{
 							"name": "feedRate",
@@ -1724,222 +1763,6 @@
 									"name": "rootInstanceGeneration",
 									"params": {},
 									"path": ".Line2.crusher.C2230_H1",
-									"connectionName": "opc"
-								}
-							}
-						}
-					],
-					"parameters": {
-						"type": "EmptyParameters"
-					}
-				},
-				{
-					"name": "line3_crusher",
-					"groupAs": "/aiGenDemo",
-					"tags": [],
-					"model": "Crusher",
-					"rootValueAs": "Object",
-					"template": {
-						"type": "Off"
-					},
-					"executeMode": "V4",
-					"initExpression": "",
-					"attributes": [
-						{
-							"name": "feedRate",
-							"expression": {
-								"type": "Reference",
-								"reference": {
-									"type": "Input",
-									"name": "rootInstanceGeneration",
-									"params": {},
-									"path": ".Line3.crusher.F1821",
-									"connectionName": "opc"
-								}
-							}
-						},
-						{
-							"name": "powerKW",
-							"expression": {
-								"type": "Reference",
-								"reference": {
-									"type": "Input",
-									"name": "rootInstanceGeneration",
-									"params": {},
-									"path": ".Line3.crusher.P2AAA",
-									"connectionName": "opc"
-								}
-							}
-						},
-						{
-							"name": "rpm",
-							"expression": {
-								"type": "Reference",
-								"reference": {
-									"type": "Input",
-									"name": "rootInstanceGeneration",
-									"params": {},
-									"path": ".Line3.crusher.R210",
-									"connectionName": "opc"
-								}
-							}
-						},
-						{
-							"name": "vibration",
-							"expression": {
-								"type": "Reference",
-								"reference": {
-									"type": "Input",
-									"name": "rootInstanceGeneration",
-									"params": {},
-									"path": ".Line3.crusher.HZ_11",
-									"connectionName": "opc"
-								}
-							}
-						},
-						{
-							"name": "temperature",
-							"expression": {
-								"type": "Reference",
-								"reference": {
-									"type": "Input",
-									"name": "rootInstanceGeneration",
-									"params": {},
-									"path": ".Line3.crusher.TX_44_0",
-									"connectionName": "opc"
-								}
-							}
-						},
-						{
-							"name": "status",
-							"expression": {
-								"type": "Reference",
-								"reference": {
-									"type": "Input",
-									"name": "rootInstanceGeneration",
-									"params": {},
-									"path": ".Line3.crusher.S10",
-									"connectionName": "opc"
-								}
-							}
-						},
-						{
-							"name": "crushRate",
-							"expression": {
-								"type": "Reference",
-								"reference": {
-									"type": "Input",
-									"name": "rootInstanceGeneration",
-									"params": {},
-									"path": ".Line3.crusher.C2992_H1",
-									"connectionName": "opc"
-								}
-							}
-						}
-					],
-					"parameters": {
-						"type": "EmptyParameters"
-					}
-				},
-				{
-					"name": "line4_crusher",
-					"groupAs": "/aiGenDemo",
-					"tags": [],
-					"model": "Crusher",
-					"rootValueAs": "Object",
-					"template": {
-						"type": "Off"
-					},
-					"executeMode": "V4",
-					"initExpression": "",
-					"attributes": [
-						{
-							"name": "feedRate",
-							"expression": {
-								"type": "Reference",
-								"reference": {
-									"type": "Input",
-									"name": "rootInstanceGeneration",
-									"params": {},
-									"path": ".Line4.crusher.F1822",
-									"connectionName": "opc"
-								}
-							}
-						},
-						{
-							"name": "powerKW",
-							"expression": {
-								"type": "Reference",
-								"reference": {
-									"type": "Input",
-									"name": "rootInstanceGeneration",
-									"params": {},
-									"path": ".Line4.crusher.P2AAB",
-									"connectionName": "opc"
-								}
-							}
-						},
-						{
-							"name": "rpm",
-							"expression": {
-								"type": "Reference",
-								"reference": {
-									"type": "Input",
-									"name": "rootInstanceGeneration",
-									"params": {},
-									"path": ".Line4.crusher.R211",
-									"connectionName": "opc"
-								}
-							}
-						},
-						{
-							"name": "vibration",
-							"expression": {
-								"type": "Reference",
-								"reference": {
-									"type": "Input",
-									"name": "rootInstanceGeneration",
-									"params": {},
-									"path": ".Line4.crusher.HZ_12",
-									"connectionName": "opc"
-								}
-							}
-						},
-						{
-							"name": "temperature",
-							"expression": {
-								"type": "Reference",
-								"reference": {
-									"type": "Input",
-									"name": "rootInstanceGeneration",
-									"params": {},
-									"path": ".Line4.crusher.TX_44_1",
-									"connectionName": "opc"
-								}
-							}
-						},
-						{
-							"name": "status",
-							"expression": {
-								"type": "Reference",
-								"reference": {
-									"type": "Input",
-									"name": "rootInstanceGeneration",
-									"params": {},
-									"path": ".Line4.crusher.S11",
-									"connectionName": "opc"
-								}
-							}
-						},
-						{
-							"name": "crushRate",
-							"expression": {
-								"type": "Reference",
-								"reference": {
-									"type": "Input",
-									"name": "rootInstanceGeneration",
-									"params": {},
-									"path": ".Line4.crusher.C2700_H1",
 									"connectionName": "opc"
 								}
 							}
@@ -2952,7 +2775,7 @@
 				"groupAs": "/mcpTools/pi",
 				"tags": [],
 				"inputStages": [
-					"browseTimescale"
+					"browsePI"
 				],
 				"stages": [
 					{
@@ -3248,7 +3071,7 @@
 				"groupAs": "/mcpTools/pi",
 				"tags": [],
 				"inputStages": [
-					"readTimescale"
+					"readPi"
 				],
 				"stages": [
 					{
@@ -3876,7 +3699,7 @@
 						},
 						"config": {
 							"type": ".TransformConfig",
-							"transformExpression": "stage.setValue(extractFullPaths(event.value));\r\n\r\nfunction extractFullPaths(arr) {\r\n  return arr\r\n    .map(item => item.full_path)\r\n    .filter(path => !path.includes('_timestamp'));\r\n}"
+							"transformExpression": "stage.setValue(extractFullPaths(event.value));\r\n\r\n// Format the path and remove the internal _timestamp column\r\nfunction extractFullPaths(arr) {\r\n  return arr\r\n    .map(item => item.full_path)\r\n    .filter(path => !path.includes('_timestamp'));\r\n}"
 						},
 						"outputs": [
 							"Return"
@@ -3940,7 +3763,7 @@
 							}
 						},
 						"outputs": [
-							"tpPiFormat"
+							"toPiFormat"
 						]
 					},
 					{
@@ -3966,7 +3789,7 @@
 						},
 						"config": {
 							"type": ".TransformConfig",
-							"transformExpression": "stage.setValue(groupPaths(event.value.points));\r\n\r\nfunction groupPaths(paths) {\r\n  const map = new Map();\r\n\r\n  paths.forEach(fullPath => {\r\n    const [table, rest] = fullPath.split(':');\r\n    if (!rest) return;\r\n\r\n    const parts = rest.split('.');\r\n    if (parts.length < 2) return;\r\n\r\n    const attribute = parts.pop();\r\n    const path = parts.join('.');\r\n\r\n    const key = `${table}|${path}`;\r\n\r\n    if (!map.has(key)) {\r\n      map.set(key, { table, path, attributes: new Set() });\r\n    }\r\n\r\n    map.get(key).attributes.add(attribute);\r\n  });\r\n\r\n  // Convert to array and quote attributes\r\n  return Array.from(map.values()).map(({ table, path, attributes }) => ({\r\n    table,\r\n    path,\r\n    attributes: Array.from(attributes)\r\n      .map(attr => `\"${attr}\"`)\r\n      .join(', ')\r\n  }));\r\n}\r\n\r\n"
+							"transformExpression": "stage.setValue(groupPaths(event.value.points));\r\n\r\nfunction groupPaths(paths) {\r\n  // Ideally the tablename would be in the point path, but for the demo I'll infer it from the LineX.<table>.attribute\r\n  const tableMap = {\r\n    crusher: 'Crusher',\r\n    drumDryer: 'DrumDryer',\r\n    granulator: 'Granulator',\r\n    mixer: 'Mixer',\r\n    packer: 'Packer'\r\n  };\r\n\r\n  const map = new Map();\r\n\r\n  paths.forEach(fullPath => {\r\n    const parts = fullPath.split('.');\r\n    if (parts.length < 3) return;\r\n\r\n    const attribute = parts.pop();\r\n    const path = parts.join('.');\r\n\r\n    const deviceKey = parts[1]; // e.g., 'crusher' from 'Line1.crusher.attribute'\r\n    const table = tableMap[deviceKey];\r\n\r\n    if (!table) return; // skip unknown devices\r\n\r\n    const key = `${table}|${path}`;\r\n\r\n    if (!map.has(key)) {\r\n      map.set(key, { table, path, attributes: new Set() });\r\n    }\r\n\r\n    map.get(key).attributes.add(attribute);\r\n  });\r\n\r\n  return Array.from(map.values()).map(({ table, path, attributes }) => ({\r\n    table,\r\n    path,\r\n    attributes: Array.from(attributes)\r\n      .map(attr => `\"${attr}\"`)\r\n      .join(', ')\r\n  }));\r\n}"
 						},
 						"outputs": [
 							"Breakup"
@@ -4005,7 +3828,7 @@
 						]
 					},
 					{
-						"name": "tpPiFormat",
+						"name": "toPiFormat",
 						"display": {
 							"position": {
 								"x": 2040,
