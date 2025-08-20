@@ -499,7 +499,7 @@
 						"type": "Off"
 					},
 					"executeMode": "V4",
-					"initExpression": "variables.mixer = CrusherSimulator.simulateNow(\"bad\")",
+					"initExpression": "variables.mixer = CrusherSimulator.simulateNow(\"good\")",
 					"attributes": [
 						{
 							"name": "feedRate",
