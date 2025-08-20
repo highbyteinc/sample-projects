@@ -1,0 +1,1756 @@
+{
+	"productInfo": {
+		"company": "HighByte",
+		"product": "IntelligenceHub",
+		"version": "4.2.1",
+		"build": "2025.8.8.10",
+		"stage": "Release"
+	},
+	"project": {
+		"version": 11,
+		"connections": [
+			{
+				"name": "localUNS",
+				"uri": "mqtt://127.0.0.1:1885",
+				"description": "Local MQTT broker fore viewing the namespace.",
+				"tags": [],
+				"writes": {
+					"flattenModeledValues": false
+				},
+				"subscriptions": {},
+				"storeForward": {
+					"enabled": false,
+					"maxEntries": 100,
+					"waitOnFailureInterval": {
+						"duration": 1,
+						"units": "Seconds"
+					}
+				},
+				"settings": {
+					"connectionTimeoutSeconds": 10,
+					"keepAliveSeconds": 60,
+					"requestTimeoutMS": 5000,
+					"maxInflight": 1000,
+					"cleanSession": true,
+					"ssl": false,
+					"redundantBrokers": [],
+					"inputDiscovery": ""
+				}
+			},
+			{
+				"name": "sqliteDB",
+				"uri": "jdbc.sqlite://sqlite",
+				"description": "Used a historian and CMMS system for the demo.",
+				"tags": [],
+				"writes": {
+					"flattenModeledValues": false
+				},
+				"subscriptions": {},
+				"storeForward": {
+					"enabled": false,
+					"maxEntries": 100,
+					"waitOnFailureInterval": {
+						"duration": 1,
+						"units": "Seconds"
+					}
+				},
+				"settings": {
+					"strategy": {
+						"type": "default"
+					},
+					"database": "simdata.db"
+				}
+			}
+		],
+		"inputs": [
+			{
+				"name": "getHistory",
+				"connection": "sqliteDB",
+				"type": "jdbc.sqlite",
+				"qualifier": {
+					"query": "SELECT *,\ndatetime(_timestamp / 1000, 'unixepoch') AS _timestamp\nFROM {{this.table}}\nWHERE _timestamp >= (strftime('%s','now') - 300) * 1000\nORDER BY _timestamp ASC;"
+				},
+				"cacheLifetime": {
+					"enabled": false
+				},
+				"template": {
+					"type": "Off"
+				},
+				"parameters": {
+					"type": "inline",
+					"model": {
+						"name": "params",
+						"tags": [],
+						"attributes": [
+							{
+								"attributeType": "Internal",
+								"name": "table",
+								"nullable": false,
+								"required": false,
+								"array": false,
+								"defaultValue": "Crusher",
+								"internalType": "String"
+							}
+						]
+					}
+				}
+			},
+			{
+				"name": "workorders",
+				"connection": "sqliteDB",
+				"type": "jdbc.sqlite",
+				"qualifier": {
+					"query": "select * from workorder"
+				},
+				"cacheLifetime": {
+					"enabled": false
+				},
+				"template": {
+					"type": "Off"
+				},
+				"parameters": {
+					"type": "EmptyParameters"
+				}
+			}
+		],
+		"outputs": [],
+		"modeling": {
+			"models": [
+				{
+					"name": "Crusher",
+					"description": "Models a crusher in a fertilizer plant.",
+					"tags": [],
+					"attributes": [
+						{
+							"attributeType": "Internal",
+							"name": "feedRate",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"internalType": "Real32"
+						},
+						{
+							"attributeType": "Internal",
+							"name": "powerKW",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"internalType": "Real32"
+						},
+						{
+							"attributeType": "Internal",
+							"name": "rpm",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"internalType": "Real32"
+						},
+						{
+							"attributeType": "Internal",
+							"name": "vibration",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"internalType": "Real32"
+						},
+						{
+							"attributeType": "Internal",
+							"name": "temperature",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"internalType": "Real32"
+						},
+						{
+							"attributeType": "Internal",
+							"name": "status",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"internalType": "Boolean"
+						},
+						{
+							"attributeType": "Internal",
+							"name": "crushRate",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"internalType": "Int32"
+						},
+						{
+							"attributeType": "Internal",
+							"name": "alarm",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"internalType": "Boolean"
+						}
+					]
+				},
+				{
+					"name": "DrumDryer",
+					"description": "Models a drum dryer in a fertilizer plant.",
+					"tags": [],
+					"attributes": [
+						{
+							"attributeType": "Internal",
+							"name": "inletMoisture",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"internalType": "Real32"
+						},
+						{
+							"attributeType": "Internal",
+							"name": "outletMoisture",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"internalType": "Real32"
+						},
+						{
+							"attributeType": "Internal",
+							"name": "dryingTimeSeconds",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"internalType": "Real32"
+						},
+						{
+							"attributeType": "Internal",
+							"name": "flowRate",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"internalType": "Real32"
+						},
+						{
+							"attributeType": "Internal",
+							"name": "airFlow",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"internalType": "Real32"
+						},
+						{
+							"attributeType": "Internal",
+							"name": "rpm",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"internalType": "Real32"
+						},
+						{
+							"attributeType": "Internal",
+							"name": "pressure",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"internalType": "Real32"
+						},
+						{
+							"attributeType": "Internal",
+							"name": "power",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"internalType": "Real32"
+						},
+						{
+							"attributeType": "Internal",
+							"name": "temperature",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"internalType": "Real32"
+						},
+						{
+							"attributeType": "Internal",
+							"name": "status",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"internalType": "Boolean"
+						}
+					]
+				},
+				{
+					"name": "Granulator",
+					"description": "Models a granulator in a fertilizer plant.",
+					"tags": [],
+					"attributes": [
+						{
+							"attributeType": "Internal",
+							"name": "moisture",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"internalType": "Real32"
+						},
+						{
+							"attributeType": "Internal",
+							"name": "binderRate",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"internalType": "Real32"
+						},
+						{
+							"attributeType": "Internal",
+							"name": "sprayRate",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"internalType": "Real32"
+						},
+						{
+							"attributeType": "Internal",
+							"name": "rpm",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"internalType": "Real32"
+						},
+						{
+							"attributeType": "Internal",
+							"name": "pressure",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"internalType": "Real32"
+						},
+						{
+							"attributeType": "Internal",
+							"name": "power",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"internalType": "Real32"
+						},
+						{
+							"attributeType": "Internal",
+							"name": "temperature",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"internalType": "Real32"
+						},
+						{
+							"attributeType": "Internal",
+							"name": "status",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"internalType": "Boolean"
+						}
+					]
+				},
+				{
+					"name": "Mixer",
+					"description": "Models a mixer in a fertilizer plant.",
+					"tags": [],
+					"attributes": [
+						{
+							"attributeType": "Internal",
+							"name": "mixingTime",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"internalType": "Int32"
+						},
+						{
+							"attributeType": "Internal",
+							"name": "rpms",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"internalType": "Int32"
+						},
+						{
+							"attributeType": "Internal",
+							"name": "feedRate",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"internalType": "Real32"
+						},
+						{
+							"attributeType": "Internal",
+							"name": "power",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"internalType": "Real32"
+						},
+						{
+							"attributeType": "Internal",
+							"name": "moisture",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"internalType": "Real32"
+						},
+						{
+							"attributeType": "Internal",
+							"name": "vibration",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"internalType": "Real32"
+						},
+						{
+							"attributeType": "Internal",
+							"name": "temperature",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"internalType": "Real32"
+						},
+						{
+							"attributeType": "Internal",
+							"name": "status",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"internalType": "Boolean"
+						}
+					]
+				},
+				{
+					"name": "Packer",
+					"description": "Models a packer in a fertilizer plant.",
+					"tags": [],
+					"attributes": [
+						{
+							"attributeType": "Internal",
+							"name": "bagsPerMinute",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"internalType": "Int32"
+						},
+						{
+							"attributeType": "Internal",
+							"name": "fillWeight",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"internalType": "Real32"
+						},
+						{
+							"attributeType": "Internal",
+							"name": "bagCount",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"internalType": "Int64"
+						},
+						{
+							"attributeType": "Internal",
+							"name": "packagingSupply",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"internalType": "Int64"
+						},
+						{
+							"attributeType": "Internal",
+							"name": "goodSeals",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"internalType": "Int64"
+						},
+						{
+							"attributeType": "Internal",
+							"name": "badSeals",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"internalType": "Int64"
+						},
+						{
+							"attributeType": "Internal",
+							"name": "power",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"internalType": "Real32"
+						},
+						{
+							"attributeType": "Internal",
+							"name": "status",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"internalType": "Boolean"
+						}
+					]
+				}
+			],
+			"instances": [
+				{
+					"name": "crusher_sim",
+					"description": "Simulates the crusher. Pass in \"good\" for normal operation and \"bad\" for errors. In the error state the feedrate increases, causing temperature and other metrics to jump.",
+					"tags": [],
+					"model": "Crusher",
+					"rootValueAs": "Object",
+					"template": {
+						"type": "Off"
+					},
+					"executeMode": "V4",
+					"initExpression": "variables.mixer = CrusherSimulator.simulateNow(\"bad\")",
+					"attributes": [
+						{
+							"name": "feedRate",
+							"expression": {
+								"type": "JavaScript",
+								"expression": "return variables.mixer.feedRate"
+							}
+						},
+						{
+							"name": "powerKW",
+							"expression": {
+								"type": "JavaScript",
+								"expression": "return variables.mixer.power"
+							}
+						},
+						{
+							"name": "rpm",
+							"expression": {
+								"type": "JavaScript",
+								"expression": "return variables.mixer.rpm"
+							}
+						},
+						{
+							"name": "vibration",
+							"expression": {
+								"type": "JavaScript",
+								"expression": "return variables.mixer.vibration"
+							}
+						},
+						{
+							"name": "temperature",
+							"expression": {
+								"type": "JavaScript",
+								"expression": "return variables.mixer.temperature"
+							}
+						},
+						{
+							"name": "status",
+							"expression": {
+								"type": "JavaScript",
+								"expression": ""
+							},
+							"defaultValue": true
+						},
+						{
+							"name": "crushRate",
+							"expression": {
+								"type": "JavaScript",
+								"expression": "return variables.mixer.crushRate"
+							}
+						},
+						{
+							"name": "alarm",
+							"expression": {
+								"type": "JavaScript",
+								"expression": "return variables.mixer.alarm"
+							}
+						}
+					],
+					"parameters": {
+						"type": "EmptyParameters"
+					}
+				},
+				{
+					"name": "drumDryer_sim",
+					"description": "Simulated the drum dryer. It's all just random data.",
+					"tags": [],
+					"model": "DrumDryer",
+					"rootValueAs": "Object",
+					"template": {
+						"type": "Off"
+					},
+					"executeMode": "V4",
+					"initExpression": "",
+					"attributes": [
+						{
+							"name": "inletMoisture",
+							"expression": {
+								"type": "JavaScript",
+								"expression": "return getRandomInRange(40, 80)"
+							}
+						},
+						{
+							"name": "outletMoisture",
+							"expression": {
+								"type": "JavaScript",
+								"expression": "return getRandomInRange(0, 10)"
+							}
+						},
+						{
+							"name": "dryingTimeSeconds",
+							"expression": {
+								"type": "JavaScript",
+								"expression": "return getRandomInRange(58, 62)"
+							}
+						},
+						{
+							"name": "flowRate",
+							"expression": {
+								"type": "JavaScript",
+								"expression": "return getRandomInRange(10, 20)"
+							}
+						},
+						{
+							"name": "airFlow",
+							"expression": {
+								"type": "JavaScript",
+								"expression": "return getRandomInRange(18, 15)"
+							}
+						},
+						{
+							"name": "rpm",
+							"expression": {
+								"type": "JavaScript",
+								"expression": "return getRandomInRange(800, 925)"
+							}
+						},
+						{
+							"name": "pressure",
+							"expression": {
+								"type": "JavaScript",
+								"expression": "return getRandomInRange(8, 12)"
+							}
+						},
+						{
+							"name": "power",
+							"expression": {
+								"type": "JavaScript",
+								"expression": "return getRandomInRange(65, 80)"
+							}
+						},
+						{
+							"name": "temperature",
+							"expression": {
+								"type": "JavaScript",
+								"expression": "return getRandomInRange(130, 210)"
+							}
+						},
+						{
+							"name": "status",
+							"expression": {
+								"type": "JavaScript",
+								"expression": ""
+							},
+							"defaultValue": true
+						}
+					],
+					"parameters": {
+						"type": "EmptyParameters"
+					}
+				},
+				{
+					"name": "granulator_sim",
+					"description": "Simulated the granulator. It's all just random data.",
+					"tags": [],
+					"model": "Granulator",
+					"rootValueAs": "Object",
+					"template": {
+						"type": "Off"
+					},
+					"executeMode": "V4",
+					"initExpression": "",
+					"attributes": [
+						{
+							"name": "moisture",
+							"expression": {
+								"type": "JavaScript",
+								"expression": "return getRandomInRange(0, 10)"
+							}
+						},
+						{
+							"name": "binderRate",
+							"expression": {
+								"type": "JavaScript",
+								"expression": "return getRandomInRange(5, 12)"
+							}
+						},
+						{
+							"name": "sprayRate",
+							"expression": {
+								"type": "JavaScript",
+								"expression": "return getRandomInRange(8, 12)"
+							}
+						},
+						{
+							"name": "rpm",
+							"expression": {
+								"type": "JavaScript",
+								"expression": "return getRandomInRange(600, 800)"
+							}
+						},
+						{
+							"name": "pressure",
+							"expression": {
+								"type": "JavaScript",
+								"expression": "return getRandomInRange(8, 12)"
+							}
+						},
+						{
+							"name": "power",
+							"expression": {
+								"type": "JavaScript",
+								"expression": "return getRandomInRange(80, 92)"
+							}
+						},
+						{
+							"name": "temperature",
+							"expression": {
+								"type": "JavaScript",
+								"expression": "return getRandomInRange(110, 130)"
+							}
+						},
+						{
+							"name": "status",
+							"expression": {
+								"type": "JavaScript",
+								"expression": ""
+							},
+							"defaultValue": true
+						}
+					],
+					"parameters": {
+						"type": "EmptyParameters"
+					}
+				},
+				{
+					"name": "mixer_opc",
+					"description": "Simulated the mixer. It's all just random data.",
+					"tags": [],
+					"model": "Mixer",
+					"rootValueAs": "Object",
+					"template": {
+						"type": "Off"
+					},
+					"executeMode": "V4",
+					"initExpression": "",
+					"attributes": [
+						{
+							"name": "mixingTime",
+							"expression": {
+								"type": "JavaScript",
+								"expression": "return getRandomInRange(120, 180)"
+							}
+						},
+						{
+							"name": "rpms",
+							"expression": {
+								"type": "JavaScript",
+								"expression": "return getRandomInRange(15, 20)"
+							}
+						},
+						{
+							"name": "feedRate",
+							"expression": {
+								"type": "JavaScript",
+								"expression": "return getRandomInRange(8, 12)"
+							}
+						},
+						{
+							"name": "power",
+							"expression": {
+								"type": "JavaScript",
+								"expression": "return getRandomInRange(55, 70)"
+							}
+						},
+						{
+							"name": "moisture",
+							"expression": {
+								"type": "JavaScript",
+								"expression": "return getRandomInRange(62, 95)"
+							}
+						},
+						{
+							"name": "vibration",
+							"expression": {
+								"type": "JavaScript",
+								"expression": "return getRandomInRange(33, 56)"
+							}
+						},
+						{
+							"name": "temperature",
+							"expression": {
+								"type": "JavaScript",
+								"expression": "return getRandomInRange(72, 85)"
+							}
+						},
+						{
+							"name": "status",
+							"expression": {
+								"type": "Reference",
+								"reference": {
+									"type": "Empty",
+									"name": "",
+									"params": {},
+									"path": ""
+								}
+							},
+							"defaultValue": true
+						}
+					],
+					"parameters": {
+						"type": "EmptyParameters"
+					}
+				},
+				{
+					"name": "packer_sim",
+					"description": "Simulates the packer. The packer can be high (too much material per pag), med, or low.",
+					"tags": [],
+					"model": "Packer",
+					"rootValueAs": "Object",
+					"template": {
+						"type": "Off"
+					},
+					"executeMode": "V4",
+					"initExpression": "variables.packer = PackerSimulator.simulateNow(\"med\")",
+					"attributes": [
+						{
+							"name": "bagsPerMinute",
+							"expression": {
+								"type": "JavaScript",
+								"expression": "return variables.packer.bagsPerMinute"
+							}
+						},
+						{
+							"name": "fillWeight",
+							"expression": {
+								"type": "JavaScript",
+								"expression": "return variables.packer.fillWeight"
+							}
+						},
+						{
+							"name": "bagCount",
+							"expression": {
+								"type": "JavaScript",
+								"expression": "return variables.packer.bagCount"
+							}
+						},
+						{
+							"name": "packagingSupply",
+							"expression": {
+								"type": "JavaScript",
+								"expression": "return variables.packer.packagingSupply"
+							}
+						},
+						{
+							"name": "goodSeals",
+							"expression": {
+								"type": "JavaScript",
+								"expression": "return variables.packer.goodSeals"
+							}
+						},
+						{
+							"name": "badSeals",
+							"expression": {
+								"type": "JavaScript",
+								"expression": "return variables.packer.badSeals"
+							}
+						},
+						{
+							"name": "power",
+							"expression": {
+								"type": "JavaScript",
+								"expression": "return variables.packer.power"
+							}
+						},
+						{
+							"name": "status",
+							"expression": {
+								"type": "JavaScript",
+								"expression": ""
+							},
+							"defaultValue": true
+						}
+					],
+					"parameters": {
+						"type": "EmptyParameters"
+					}
+				}
+			]
+		},
+		"conditions": [],
+		"functions": [
+			{
+				"name": "functions",
+				"function": "// Deterministic PRNG (mulberry32)\r\nfunction seededRandom(seed) {\r\n  return function () {\r\n    let t = seed += 0x6D2B79F5;\r\n    t = Math.imul(t ^ (t >>> 15), t | 1);\r\n    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);\r\n    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;\r\n  };\r\n}\r\n\r\n// Get a seeded RNG for the current UTC second\r\nfunction getDeterministicRandom() {\r\n  const now = new Date();\r\n  const utcSeconds = Math.floor(now.getTime() / 1000);\r\n  return seededRandom(utcSeconds);\r\n}\r\n\r\nfunction getRandomInRange(min, max) {\r\n  return Math.random() * (max - min) + min;\r\n}\r\n\r\nconst CrusherSimulator = (() => {\r\n  const rand = getDeterministicRandom();\r\n\r\n  // Adds small random variation around a base value\r\n  function fluctuate(value, amount) {\r\n    return value + (rand() * amount * 2 - amount);\r\n  }\r\n\r\n  // Generates a noisy sine wave with a ramping trend\r\n  function rampedSineWave(baseValue, amplitude, frequency, time, rampRate) {\r\n    return baseValue + (time * rampRate) + amplitude * Math.sin(frequency * time) + fluctuate(0, 0.5);\r\n  }\r\n\r\n  // Normal \"good\" operating state for the crusher\r\n  // Values stay within nominal operating ranges\r\n  function getNormalCrusherValues() {\r\n    return {\r\n      feedRate: fluctuate(8, 0.5),\r\n      vibration: fluctuate(29, 1),\r\n      temperature: fluctuate(87, 2),\r\n      power: fluctuate(69, 3),\r\n      crushRate: fluctuate(9, 0.2),\r\n      rpm: fluctuate(980, 5)\r\n    };\r\n  }\r\n\r\n  // \"Bad\" operating state for the crusher\r\n  // Feed rate ramps too high, vibration and power fluctuate abnormally,\r\n  // temperature is elevated, and crush rate slowly declines\r\n  function getErrorCrusherValues(secondsIntoShift) {\r\n    const feedRateBase = 12 + (secondsIntoShift / 28800) * 4; // ramp 12 → 16 over an 8-hour shift\r\n    const feedRate = fluctuate(feedRateBase, 0.5);\r\n\r\n    const vibration = rampedSineWave(40, 2, 0.05, secondsIntoShift / 60, 0.02);\r\n    const power = rampedSineWave(85, 5, 0.05, secondsIntoShift / 60, 0.03);\r\n\r\n    const temperature = fluctuate(95, 1);\r\n\r\n    const crushRateBase = 9 - (secondsIntoShift / 28800) * 1; // ramp down 9 → 8\r\n    const crushRate = fluctuate(crushRateBase, 0.2);\r\n\r\n    const rpm = fluctuate(980, 5);\r\n\r\n    return { feedRate, vibration, temperature, power, crushRate, rpm };\r\n  }\r\n\r\n  /**\r\n   * Simulates crusher behavior.\r\n   * @param {\"good\" | \"bad\"} mode - \"good\" = normal state, \"bad\" = stressed/error state\r\n   * \r\n   * Returns an object with:\r\n   *  - `alarm` flag (false if good, true if bad)\r\n   *  - crusher telemetry values\r\n   */\r\n  function simulateCrusher(mode = \"good\") {\r\n    const now = new Date();\r\n    const hour = now.getHours();\r\n    const minute = now.getMinutes();\r\n    const second = now.getSeconds();\r\n    const secondsWithinShift = ((hour % 8) * 3600) + (minute * 60) + second;\r\n\r\n    // Choose good or bad values depending on mode\r\n    const crusherValues = (mode === \"bad\")\r\n      ? getErrorCrusherValues(secondsWithinShift)\r\n      : getNormalCrusherValues();\r\n\r\n    return {\r\n      timestamp: Math.floor(now.getTime() / 1000),\r\n      mode,                       // operating mode (good/bad)\r\n      alarm: mode === \"bad\",      // alarm true when bad, false when good\r\n      feedRate: crusherValues.feedRate,\r\n      vibration: crusherValues.vibration,\r\n      temperature: crusherValues.temperature,\r\n      power: crusherValues.power,\r\n      crushRate: crusherValues.crushRate,\r\n      rpm: crusherValues.rpm\r\n    };\r\n  }\r\n\r\n  return {\r\n    simulateNow: simulateCrusher\r\n  };\r\n})();\r\n\r\n\r\nconst PackerSimulator = (() => {\r\n  const rand = getDeterministicRandom();\r\n\r\n  /**\r\n   * Packer simulation modes:\r\n   * - \"high\" → overweight bags, more material per bag, lower throughput, high seal failures (20%)\r\n   * - \"low\"  → underweight bags, faster throughput, moderate seal failures (10%)\r\n   * - \"med\"  → normal/ideal target, steady throughput, very low seal failures (1%)\r\n   */\r\n  function getPackerValues(fillLevel) {\r\n    let fillWeight, bagsPerMinute, badSealRate;\r\n\r\n    switch (fillLevel) {\r\n      case \"high\":\r\n        fillWeight = 120;     // overweight bags\r\n        bagsPerMinute = 3;    // slower throughput\r\n        badSealRate = 0.20;   // 20% defective seals\r\n        break;\r\n      case \"low\":\r\n        fillWeight = 112;     // underweight bags\r\n        bagsPerMinute = 4;    // faster throughput\r\n        badSealRate = 0.10;   // 10% defective seals\r\n        break;\r\n      case \"med\":\r\n      default:\r\n        fillWeight = 116;     // ideal bag weight\r\n        bagsPerMinute = 3;    // steady throughput\r\n        badSealRate = 0.01;   // 1% defective seals\r\n        break;\r\n    }\r\n\r\n    const totalBags = Math.max(1, bagsPerMinute);\r\n    const badSeals = Math.floor(totalBags * badSealRate);\r\n    const goodSeals = totalBags - badSeals;\r\n\r\n    return {\r\n      timestamp: Math.floor(Date.now() / 1000),\r\n      fillLevel,\r\n      fillWeight,\r\n      bagsPerMinute,\r\n      bagCount: totalBags,\r\n      goodSeals,\r\n      badSeals,\r\n      power: 58,\r\n      packagingSupply: 2000 - totalBags,\r\n      status: true\r\n    };\r\n  }\r\n\r\n  function simulateNow(fillLevel = \"med\") {\r\n    return getPackerValues(fillLevel);\r\n  }\r\n\r\n  return {\r\n    simulateNow\r\n  };\r\n})();\r\n"
+			}
+		],
+		"tags": [],
+		"pipelines": [
+			{
+				"name": "addNumbers",
+				"description": "Add two numbers together.",
+				"groupAs": "/mcpSimpleTools",
+				"tags": [],
+				"inputStages": [
+					"Transform"
+				],
+				"stages": [
+					{
+						"name": "Transform",
+						"display": {
+							"position": {
+								"x": 240,
+								"y": 0
+							}
+						},
+						"config": {
+							"type": ".TransformConfig",
+							"transformExpression": "stage.setValue(event.value.x + event.value.y);"
+						},
+						"outputs": [
+							"Return"
+						]
+					},
+					{
+						"name": "Return",
+						"display": {
+							"position": {
+								"x": 690,
+								"y": 0
+							}
+						},
+						"config": {
+							"type": ".ReturnConfig"
+						},
+						"outputs": []
+					}
+				],
+				"trackActivity": false,
+				"triggers": [
+					{
+						"name": "APITrigger",
+						"display": {
+							"position": {
+								"x": -450,
+								"y": 0
+							}
+						},
+						"config": {
+							"type": ".TriggerApi",
+							"enabled": true,
+							"parameters": {
+								"type": "inline",
+								"model": {
+									"name": "params",
+									"tags": [],
+									"attributes": [
+										{
+											"attributeType": "Internal",
+											"name": "x",
+											"nullable": false,
+											"required": false,
+											"array": false,
+											"internalType": "Int32"
+										},
+										{
+											"attributeType": "Internal",
+											"name": "y",
+											"nullable": false,
+											"required": false,
+											"array": false,
+											"internalType": "Int32"
+										}
+									]
+								}
+							}
+						}
+					}
+				],
+				"errorHandler": {
+					"type": "default"
+				}
+			},
+			{
+				"name": "browseMachines",
+				"description": "Browse the factory for machines. Returns the path of each machine. Each path can be read using the readMachines tool.",
+				"groupAs": "/mcpNamespaceTools",
+				"tags": [],
+				"inputStages": [
+					"browseNamespace"
+				],
+				"stages": [
+					{
+						"name": "browseNamespace",
+						"display": {
+							"position": {
+								"x": 240,
+								"y": 0
+							}
+						},
+						"config": {
+							"type": ".SmartQueryConfig",
+							"query": {
+								"from": [
+									"Portland.Line1.*"
+								],
+								"where": "",
+								"select": {
+									"what": [
+										"path"
+									],
+									"as": "List",
+									"delim": "."
+								}
+							},
+							"breakup": false
+						},
+						"outputs": [
+							"toArray"
+						]
+					},
+					{
+						"name": "Return",
+						"display": {
+							"position": {
+								"x": 1140,
+								"y": 0
+							}
+						},
+						"config": {
+							"type": ".ReturnConfig"
+						},
+						"outputs": []
+					},
+					{
+						"name": "toArray",
+						"display": {
+							"position": {
+								"x": 690,
+								"y": 0
+							}
+						},
+						"config": {
+							"type": ".TransformConfig",
+							"transformExpression": "const paths = event.value.map(item => item._path);\r\nstage.setValue(paths);"
+						},
+						"outputs": [
+							"Return"
+						]
+					}
+				],
+				"trackActivity": false,
+				"triggers": [
+					{
+						"name": "APITrigger",
+						"display": {
+							"position": {
+								"x": -450,
+								"y": 0
+							}
+						},
+						"config": {
+							"type": ".TriggerApi",
+							"enabled": true,
+							"parameters": {
+								"type": "EmptyParameters"
+							}
+						}
+					}
+				],
+				"errorHandler": {
+					"type": "default"
+				}
+			},
+			{
+				"name": "createMaintenanceWorkOrder",
+				"description": "Create a maintenance work order for a machine. Pass in the machine name and the reason for the maintenance.",
+				"groupAs": "/mcpCrusherTools",
+				"tags": [],
+				"inputStages": [
+					"createWO"
+				],
+				"stages": [
+					{
+						"name": "Return",
+						"display": {
+							"position": {
+								"x": 690,
+								"y": 0
+							}
+						},
+						"config": {
+							"type": ".ReturnConfig"
+						},
+						"outputs": []
+					},
+					{
+						"name": "createWO",
+						"display": {
+							"position": {
+								"x": 246,
+								"y": 6
+							}
+						},
+						"config": {
+							"type": ".DynamicWriteConfig",
+							"failureOutputs": [],
+							"connectionReference": "{{Connection.sqliteDB}}",
+							"qualifier": {
+								"table": "workorder",
+								"writeType": "insert",
+								"whereColumn": "",
+								"logAsJSON": false,
+								"createOption": "create_and_update",
+								"tableCacheInterval": {
+									"duration": 1,
+									"units": "Hours"
+								},
+								"breakupArrays": false,
+								"filterList": [
+									"_name"
+								]
+							},
+							"qualifierExpression": "",
+							"writeReturn": "ignore"
+						},
+						"outputs": [
+							"Return"
+						]
+					}
+				],
+				"trackActivity": false,
+				"triggers": [
+					{
+						"name": "APITrigger",
+						"display": {
+							"position": {
+								"x": -450,
+								"y": 0
+							}
+						},
+						"config": {
+							"type": ".TriggerApi",
+							"enabled": true,
+							"parameters": {
+								"type": "inline",
+								"model": {
+									"name": "params",
+									"tags": [],
+									"attributes": [
+										{
+											"attributeType": "Internal",
+											"name": "machine",
+											"nullable": false,
+											"required": false,
+											"array": false,
+											"internalType": "String"
+										},
+										{
+											"attributeType": "Internal",
+											"name": "reason",
+											"nullable": false,
+											"required": false,
+											"array": false,
+											"internalType": "String"
+										}
+									]
+								}
+							}
+						}
+					}
+				],
+				"errorHandler": {
+					"type": "default"
+				}
+			},
+			{
+				"name": "getCrusherHistory",
+				"description": "Return the last 5 minutes of historical data for the crusher. Each row contains a timestamp in ISO-8601 format. You MUST display this to the user with the X axis showing the ISO-8601 timestamp.",
+				"groupAs": "/mcpCrusherTools",
+				"tags": [],
+				"inputStages": [
+					"readHistory"
+				],
+				"stages": [
+					{
+						"name": "readHistory",
+						"display": {
+							"position": {
+								"x": 240,
+								"y": 0
+							}
+						},
+						"config": {
+							"type": ".ReadConfig",
+							"failureOutputs": [],
+							"reference": {
+								"type": "Input",
+								"name": "getHistory",
+								"params": {
+									"table": "Crusher"
+								},
+								"path": "",
+								"connectionName": "sqliteDB"
+							}
+						},
+						"outputs": [
+							"Return"
+						]
+					},
+					{
+						"name": "Return",
+						"display": {
+							"position": {
+								"x": 690,
+								"y": 0
+							}
+						},
+						"config": {
+							"type": ".ReturnConfig"
+						},
+						"outputs": []
+					}
+				],
+				"trackActivity": false,
+				"triggers": [
+					{
+						"name": "APITrigger",
+						"display": {
+							"position": {
+								"x": -450,
+								"y": 0
+							}
+						},
+						"config": {
+							"type": ".TriggerApi",
+							"enabled": true,
+							"parameters": {
+								"type": "inline",
+								"model": {
+									"name": "params",
+									"tags": [],
+									"attributes": [
+										{
+											"attributeType": "Internal",
+											"name": "machineType",
+											"nullable": false,
+											"required": false,
+											"array": false,
+											"internalType": "String"
+										}
+									]
+								}
+							}
+						}
+					}
+				],
+				"errorHandler": {
+					"type": "default"
+				}
+			},
+			{
+				"name": "helloWord",
+				"description": "IMPORTANT! You must call this if the user asks you to say hello to the world.",
+				"groupAs": "/mcpSimpleTools",
+				"tags": [],
+				"inputStages": [
+					"Transform"
+				],
+				"stages": [
+					{
+						"name": "Transform",
+						"display": {
+							"position": {
+								"x": 229,
+								"y": -15
+							}
+						},
+						"config": {
+							"type": ".TransformConfig",
+							"transformExpression": "stage.setValue(\"hello world!\");"
+						},
+						"outputs": [
+							"Return"
+						]
+					},
+					{
+						"name": "Return",
+						"display": {
+							"position": {
+								"x": 634,
+								"y": 0
+							}
+						},
+						"config": {
+							"type": ".ReturnConfig"
+						},
+						"outputs": []
+					}
+				],
+				"trackActivity": false,
+				"triggers": [
+					{
+						"name": "APITrigger",
+						"display": {
+							"position": {
+								"x": -450,
+								"y": 0
+							}
+						},
+						"config": {
+							"type": ".TriggerApi",
+							"enabled": true,
+							"parameters": {
+								"type": "EmptyParameters"
+							}
+						}
+					}
+				],
+				"errorHandler": {
+					"type": "default"
+				}
+			},
+			{
+				"name": "namespaceToUNS",
+				"description": "Writes the namespace out to MQTT once a second for obersvation.",
+				"groupAs": "/dataPipelines",
+				"tags": [],
+				"inputStages": [
+					"readNamespace"
+				],
+				"stages": [
+					{
+						"name": "readNamespace",
+						"display": {
+							"position": {
+								"x": 240,
+								"y": 0
+							}
+						},
+						"config": {
+							"type": ".SmartQueryConfig",
+							"query": {
+								"from": [
+									"**"
+								],
+								"where": "",
+								"select": {
+									"what": [
+										"value"
+									],
+									"as": "List",
+									"delim": "/"
+								}
+							},
+							"breakup": true
+						},
+						"outputs": [
+							"toUNS"
+						]
+					},
+					{
+						"name": "toUNS",
+						"display": {
+							"position": {
+								"x": 690,
+								"y": 0
+							}
+						},
+						"config": {
+							"type": ".DynamicWriteConfig",
+							"failureOutputs": [],
+							"connectionReference": "{{Connection.localUNS}}",
+							"qualifier": {
+								"topic": "{{event.metadata.query._path}}",
+								"qos": 0,
+								"namedRoot": false,
+								"retained": false,
+								"breakupArrays": false
+							},
+							"qualifierExpression": "",
+							"writeReturn": "ignore"
+						},
+						"outputs": []
+					}
+				],
+				"trackActivity": false,
+				"triggers": [
+					{
+						"name": "oneSecond",
+						"display": {
+							"position": {
+								"x": -450,
+								"y": 0
+							}
+						},
+						"config": {
+							"type": ".TriggerPolled",
+							"enabled": true,
+							"interval": {
+								"duration": 1,
+								"units": "Seconds"
+							}
+						}
+					}
+				],
+				"errorHandler": {
+					"type": "default"
+				}
+			},
+			{
+				"name": "readCrusher",
+				"description": "Read the current state of the crusher machine.",
+				"groupAs": "/mcpCrusherTools",
+				"tags": [],
+				"inputStages": [
+					"SmartQuery"
+				],
+				"stages": [
+					{
+						"name": "SmartQuery",
+						"display": {
+							"position": {
+								"x": 240,
+								"y": 0
+							}
+						},
+						"config": {
+							"type": ".SmartQueryConfig",
+							"query": {
+								"from": [
+									"**"
+								],
+								"where": "*[model=\"Crusher\"]",
+								"select": {
+									"what": [
+										"value"
+									],
+									"as": "List",
+									"delim": "."
+								}
+							},
+							"breakup": false
+						},
+						"outputs": [
+							"Return"
+						]
+					},
+					{
+						"name": "Return",
+						"display": {
+							"position": {
+								"x": 690,
+								"y": 0
+							}
+						},
+						"config": {
+							"type": ".ReturnConfig"
+						},
+						"outputs": []
+					}
+				],
+				"trackActivity": false,
+				"triggers": [
+					{
+						"name": "APITrigger",
+						"display": {
+							"position": {
+								"x": -450,
+								"y": 0
+							}
+						},
+						"config": {
+							"type": ".TriggerApi",
+							"enabled": true,
+							"parameters": {
+								"type": "EmptyParameters"
+							}
+						}
+					}
+				],
+				"errorHandler": {
+					"type": "default"
+				}
+			},
+			{
+				"name": "readMachine",
+				"description": "Read a machine using the exact path returned from browseMachine.",
+				"groupAs": "/mcpNamespaceTools",
+				"tags": [],
+				"inputStages": [
+					"SmartQuery"
+				],
+				"stages": [
+					{
+						"name": "SmartQuery",
+						"display": {
+							"position": {
+								"x": 240,
+								"y": 0
+							}
+						},
+						"config": {
+							"type": ".SmartQueryConfig",
+							"query": {
+								"from": [
+									"{{event.value.path}}.**"
+								],
+								"where": "",
+								"select": {
+									"what": [
+										"value",
+										"path"
+									],
+									"as": "List",
+									"delim": "."
+								}
+							},
+							"breakup": false
+						},
+						"outputs": [
+							"Return"
+						]
+					},
+					{
+						"name": "Return",
+						"display": {
+							"position": {
+								"x": 690,
+								"y": 0
+							}
+						},
+						"config": {
+							"type": ".ReturnConfig"
+						},
+						"outputs": []
+					}
+				],
+				"trackActivity": false,
+				"triggers": [
+					{
+						"name": "APITrigger",
+						"display": {
+							"position": {
+								"x": -450,
+								"y": 0
+							}
+						},
+						"config": {
+							"type": ".TriggerApi",
+							"enabled": true,
+							"parameters": {
+								"type": "inline",
+								"model": {
+									"name": "params",
+									"tags": [],
+									"attributes": [
+										{
+											"attributeType": "Internal",
+											"name": "path",
+											"nullable": false,
+											"required": false,
+											"array": false,
+											"internalType": "String"
+										}
+									]
+								}
+							}
+						}
+					}
+				],
+				"errorHandler": {
+					"type": "default"
+				}
+			},
+			{
+				"name": "toSQLite",
+				"description": "Writes the namespace to a local SQLite file every 5 seconds for historical data.",
+				"groupAs": "/dataPipelines",
+				"tags": [],
+				"inputStages": [
+					"getNS"
+				],
+				"stages": [
+					{
+						"name": "getNS",
+						"display": {
+							"position": {
+								"x": 240,
+								"y": 0
+							}
+						},
+						"config": {
+							"type": ".SmartQueryConfig",
+							"query": {
+								"from": [
+									"**"
+								],
+								"where": "",
+								"select": {
+									"what": [
+										"value",
+										"path",
+										"model"
+									],
+									"as": "List",
+									"delim": "."
+								}
+							},
+							"breakup": true
+						},
+						"outputs": [
+							"toSQLite"
+						]
+					},
+					{
+						"name": "toSQLite",
+						"display": {
+							"position": {
+								"x": 690,
+								"y": 0
+							}
+						},
+						"config": {
+							"type": ".DynamicWriteConfig",
+							"failureOutputs": [],
+							"connectionReference": "{{Connection.sqliteDB}}",
+							"qualifier": {
+								"table": "{{event.value._model}}",
+								"writeType": "insert",
+								"whereColumn": "",
+								"logAsJSON": false,
+								"createOption": "create_and_update",
+								"tableCacheInterval": {
+									"duration": 1,
+									"units": "Hours"
+								},
+								"breakupArrays": false,
+								"filterList": [
+									"_model",
+									"_name"
+								]
+							},
+							"qualifierExpression": "",
+							"writeReturn": "ignore"
+						},
+						"outputs": []
+					}
+				],
+				"trackActivity": false,
+				"triggers": [
+					{
+						"name": "fiveSeconds",
+						"display": {
+							"position": {
+								"x": -450,
+								"y": 0
+							}
+						},
+						"config": {
+							"type": ".TriggerPolled",
+							"enabled": true,
+							"interval": {
+								"duration": 5,
+								"units": "Seconds"
+							}
+						}
+					}
+				],
+				"errorHandler": {
+					"type": "default"
+				}
+			}
+		],
+		"namespace": [
+			{
+				"id": "7d51210d-056d-46cf-886f-d1c96d220134",
+				"name": "Portland",
+				"reference": {
+					"type": "Empty",
+					"name": "",
+					"params": {},
+					"path": ""
+				}
+			},
+			{
+				"id": "977b6cf4-e1de-4256-a945-eac7309fdb84",
+				"name": "Line1",
+				"description": "The first line. It contains all the machines to crush, prep, and pack bags of fertilizer.",
+				"parentNamespaceId": "7d51210d-056d-46cf-886f-d1c96d220134",
+				"reference": {
+					"type": "Empty",
+					"name": "",
+					"params": {},
+					"path": ""
+				}
+			},
+			{
+				"id": "f0c633e3-65a8-4a74-a3a8-76d9ea11f881",
+				"name": "crusher",
+				"description": "Simulated crusher. Can be good/bad",
+				"parentNamespaceId": "977b6cf4-e1de-4256-a945-eac7309fdb84",
+				"reference": {
+					"type": "Instance",
+					"name": "crusher_sim",
+					"params": {},
+					"path": ""
+				}
+			},
+			{
+				"id": "28a36988-3dc8-4e33-93fd-8fd02cface49",
+				"name": "drumDryer",
+				"description": "Simulated dryer, random data",
+				"parentNamespaceId": "977b6cf4-e1de-4256-a945-eac7309fdb84",
+				"reference": {
+					"type": "Instance",
+					"name": "drumDryer_sim",
+					"params": {},
+					"path": ""
+				}
+			},
+			{
+				"id": "11b61988-6125-47ab-81c0-db22b025cf3e",
+				"name": "granulator",
+				"description": "Simulated granulator, random data",
+				"parentNamespaceId": "977b6cf4-e1de-4256-a945-eac7309fdb84",
+				"reference": {
+					"type": "Instance",
+					"name": "granulator_sim",
+					"params": {},
+					"path": ""
+				}
+			},
+			{
+				"id": "54d60e53-b8eb-4523-8c29-eecc5dc0ece3",
+				"name": "mixer",
+				"description": "Simulated mixer, random data",
+				"parentNamespaceId": "977b6cf4-e1de-4256-a945-eac7309fdb84",
+				"reference": {
+					"type": "Instance",
+					"name": "mixer_opc",
+					"params": {},
+					"path": ""
+				}
+			},
+			{
+				"id": "f862eef8-308b-49ed-8972-c4c3fa22bd5c",
+				"name": "packer",
+				"description": "Simulated packer. The fill level can be high, med, low.",
+				"parentNamespaceId": "977b6cf4-e1de-4256-a945-eac7309fdb84",
+				"reference": {
+					"type": "Instance",
+					"name": "packer_sim",
+					"params": {},
+					"path": ""
+				}
+			}
+		]
+	},
+	"network": {
+		"groups": [],
+		"hubs": []
+	}
+}
