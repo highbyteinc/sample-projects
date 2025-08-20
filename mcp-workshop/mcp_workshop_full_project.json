@@ -940,7 +940,7 @@
 						},
 						"config": {
 							"type": ".TriggerApi",
-							"enabled": true,
+							"enabled": false,
 							"parameters": {
 								"type": "inline",
 								"model": {
@@ -1053,7 +1053,7 @@
 						},
 						"config": {
 							"type": ".TriggerApi",
-							"enabled": true,
+							"enabled": false,
 							"parameters": {
 								"type": "EmptyParameters"
 							}
@@ -1133,7 +1133,7 @@
 						},
 						"config": {
 							"type": ".TriggerApi",
-							"enabled": true,
+							"enabled": false,
 							"parameters": {
 								"type": "inline",
 								"model": {
@@ -1226,7 +1226,7 @@
 						},
 						"config": {
 							"type": ".TriggerApi",
-							"enabled": true,
+							"enabled": false,
 							"parameters": {
 								"type": "inline",
 								"model": {
@@ -1302,7 +1302,7 @@
 						},
 						"config": {
 							"type": ".TriggerApi",
-							"enabled": true,
+							"enabled": false,
 							"parameters": {
 								"type": "EmptyParameters"
 							}
@@ -1388,7 +1388,7 @@
 						},
 						"config": {
 							"type": ".TriggerPolled",
-							"enabled": true,
+							"enabled": false,
 							"interval": {
 								"duration": 1,
 								"units": "Seconds"
@@ -1464,7 +1464,7 @@
 						},
 						"config": {
 							"type": ".TriggerApi",
-							"enabled": true,
+							"enabled": false,
 							"parameters": {
 								"type": "EmptyParameters"
 							}
@@ -1540,7 +1540,7 @@
 						},
 						"config": {
 							"type": ".TriggerApi",
-							"enabled": true,
+							"enabled": false,
 							"parameters": {
 								"type": "inline",
 								"model": {
@@ -1651,7 +1651,7 @@
 						},
 						"config": {
 							"type": ".TriggerPolled",
-							"enabled": true,
+							"enabled": false,
 							"interval": {
 								"duration": 5,
 								"units": "Seconds"
