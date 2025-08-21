@@ -890,6 +890,90 @@
 		"tags": [],
 		"pipelines": [
 			{
+				"name": "addNumbers",
+				"description": "Add two numbers together",
+				"groupAs": "/mcpSimpleTools",
+				"tags": [],
+				"inputStages": [
+					"Transform"
+				],
+				"stages": [
+					{
+						"name": "Transform",
+						"display": {
+							"position": {
+								"x": 240,
+								"y": 0
+							}
+						},
+						"config": {
+							"type": ".TransformConfig",
+							"transformExpression": "stage.setValue(event.value.x + event.value.y);"
+						},
+						"outputs": [
+							"Return"
+						]
+					},
+					{
+						"name": "Return",
+						"display": {
+							"position": {
+								"x": 690,
+								"y": 0
+							}
+						},
+						"config": {
+							"type": ".ReturnConfig"
+						},
+						"outputs": []
+					}
+				],
+				"trackActivity": false,
+				"triggers": [
+					{
+						"name": "APITrigger",
+						"display": {
+							"position": {
+								"x": -450,
+								"y": 0
+							}
+						},
+						"config": {
+							"type": ".TriggerApi",
+							"enabled": true,
+							"parameters": {
+								"type": "inline",
+								"model": {
+									"name": "params",
+									"tags": [],
+									"attributes": [
+										{
+											"attributeType": "Internal",
+											"name": "x",
+											"nullable": false,
+											"required": false,
+											"array": false,
+											"internalType": "Int32"
+										},
+										{
+											"attributeType": "Internal",
+											"name": "y",
+											"nullable": false,
+											"required": false,
+											"array": false,
+											"internalType": "Int32"
+										}
+									]
+								}
+							}
+						}
+					}
+				],
+				"errorHandler": {
+					"type": "default"
+				}
+			},
+			{
 				"name": "browseMachines",
 				"description": "Browse the factory for machines. Returns the path of each machine. Each path can be read using the readMachines tool.",
 				"groupAs": "/mcpNamespaceTools",
@@ -1168,6 +1252,68 @@
 				}
 			},
 			{
+				"name": "helloWorld",
+				"description": "Say hello to the world",
+				"groupAs": "/mcpSimpleTools",
+				"tags": [],
+				"inputStages": [
+					"Transform"
+				],
+				"stages": [
+					{
+						"name": "Transform",
+						"display": {
+							"position": {
+								"x": 240,
+								"y": 0
+							}
+						},
+						"config": {
+							"type": ".TransformConfig",
+							"transformExpression": "stage.setValue(\"Hello World!\");"
+						},
+						"outputs": [
+							"Return"
+						]
+					},
+					{
+						"name": "Return",
+						"display": {
+							"position": {
+								"x": 690,
+								"y": 0
+							}
+						},
+						"config": {
+							"type": ".ReturnConfig"
+						},
+						"outputs": []
+					}
+				],
+				"trackActivity": false,
+				"triggers": [
+					{
+						"name": "APITrigger",
+						"display": {
+							"position": {
+								"x": -450,
+								"y": 0
+							}
+						},
+						"config": {
+							"type": ".TriggerApi",
+							"enabled": true,
+							"parameters": {
+								"type": "EmptyParameters"
+							}
+						}
+					}
+				],
+				"errorHandler": {
+					"type": "default"
+				}
+			},
+			{
 				"name": "namespaceToUNS",
 				"description": "Writes the namespace out to MQTT once a second for obersvation.",
 				"groupAs": "/dataPipelines",
@@ -1242,7 +1388,7 @@
 						},
 						"config": {
 							"type": ".TriggerPolled",
-							"enabled": false,
+							"enabled": true,
 							"interval": {
 								"duration": 1,
 								"units": "Seconds"
