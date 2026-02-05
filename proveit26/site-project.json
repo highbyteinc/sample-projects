@@ -122,16 +122,8 @@
     "functions" : [ ],
     "namespace" : [ {
       "type" : "local",
-      "id" : "17026f0c-b562-412a-883f-c93b1a594ef9",
-      "name" : "Portland",
-      "reference" : {
-        "type" : "Empty"
-      }
-    }, {
-      "type" : "local",
       "id" : "02ea4625-da7c-401f-a04f-713dce2b0511",
       "name" : "RD",
-      "parentNamespaceId" : "17026f0c-b562-412a-883f-c93b1a594ef9",
       "reference" : {
         "type" : "Empty"
       }
