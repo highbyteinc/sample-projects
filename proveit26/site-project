@@ -1,0 +1,308 @@
+{
+  "productInfo" : {
+    "company" : "HighByte",
+    "product" : "IntelligenceHub",
+    "version" : "4.4.0",
+    "build" : "2026.2.5.212",
+    "stage" : "Alpha"
+  },
+  "project" : {
+    "version" : 13,
+    "connections" : [ ],
+    "conditions" : [ ],
+    "inputs" : [ ],
+    "outputs" : [ ],
+    "modeling" : {
+      "models" : [ {
+        "name" : "Boiler",
+        "tags" : [ ],
+        "attributes" : [ {
+          "attributeType" : "Internal",
+          "name" : "temp",
+          "nullable" : false,
+          "required" : false,
+          "array" : false,
+          "internalType" : "Any"
+        }, {
+          "attributeType" : "Internal",
+          "name" : "pressure",
+          "nullable" : false,
+          "required" : false,
+          "array" : false,
+          "internalType" : "Any"
+        } ]
+      }, {
+        "name" : "Compressor",
+        "tags" : [ ],
+        "attributes" : [ {
+          "attributeType" : "Internal",
+          "name" : "temp",
+          "nullable" : false,
+          "required" : false,
+          "array" : false,
+          "internalType" : "Any"
+        }, {
+          "attributeType" : "Internal",
+          "name" : "pressure",
+          "nullable" : false,
+          "required" : false,
+          "array" : false,
+          "internalType" : "Any"
+        }, {
+          "attributeType" : "Internal",
+          "name" : "cycleCount",
+          "nullable" : false,
+          "required" : false,
+          "array" : false,
+          "internalType" : "Any"
+        } ]
+      } ],
+      "instances" : [ {
+        "name" : "boiler1",
+        "tags" : [ ],
+        "model" : "Boiler",
+        "rootValueAs" : "Object",
+        "template" : {
+          "type" : "Off"
+        },
+        "executeMode" : "V4",
+        "initExpression" : "",
+        "attributes" : [ {
+          "name" : "temp",
+          "expression" : {
+            "type" : "JavaScript",
+            "expression" : "return Math.random();"
+          }
+        }, {
+          "name" : "pressure",
+          "expression" : {
+            "type" : "JavaScript",
+            "expression" : "return Math.random();"
+          }
+        } ],
+        "parameters" : {
+          "type" : "EmptyParameters"
+        }
+      }, {
+        "name" : "compressor1",
+        "tags" : [ ],
+        "model" : "Compressor",
+        "rootValueAs" : "Object",
+        "template" : {
+          "type" : "Off"
+        },
+        "executeMode" : "V4",
+        "initExpression" : "",
+        "attributes" : [ {
+          "name" : "temp",
+          "expression" : {
+            "type" : "JavaScript",
+            "expression" : "return Math.random();"
+          }
+        }, {
+          "name" : "pressure",
+          "expression" : {
+            "type" : "JavaScript",
+            "expression" : "return Math.random();"
+          }
+        }, {
+          "name" : "cycleCount",
+          "expression" : {
+            "type" : "JavaScript",
+            "expression" : "return Math.random();"
+          }
+        } ],
+        "parameters" : {
+          "type" : "EmptyParameters"
+        }
+      } ]
+    },
+    "pipelines" : [ ],
+    "tags" : [ ],
+    "functions" : [ ],
+    "namespace" : [ {
+      "type" : "local",
+      "id" : "17026f0c-b562-412a-883f-c93b1a594ef9",
+      "name" : "Portland",
+      "reference" : {
+        "type" : "Empty"
+      }
+    }, {
+      "type" : "local",
+      "id" : "02ea4625-da7c-401f-a04f-713dce2b0511",
+      "name" : "RD",
+      "parentNamespaceId" : "17026f0c-b562-412a-883f-c93b1a594ef9",
+      "reference" : {
+        "type" : "Empty"
+      }
+    }, {
+      "type" : "local",
+      "id" : "997dcc08-a497-4442-9a11-c68a261fc0f0",
+      "name" : "Desk1",
+      "parentNamespaceId" : "02ea4625-da7c-401f-a04f-713dce2b0511",
+      "reference" : {
+        "type" : "Empty"
+      }
+    }, {
+      "type" : "local",
+      "id" : "7554d2ae-8ff3-46a7-bf93-c2839e264802",
+      "name" : "Boiler1",
+      "parentNamespaceId" : "997dcc08-a497-4442-9a11-c68a261fc0f0",
+      "reference" : {
+        "type" : "Instance",
+        "name" : "boiler1",
+        "path" : "",
+        "params" : { }
+      }
+    }, {
+      "type" : "local",
+      "id" : "208306c9-5531-4c81-96f1-3c1e2fd42e03",
+      "name" : "Compressor",
+      "parentNamespaceId" : "997dcc08-a497-4442-9a11-c68a261fc0f0",
+      "reference" : {
+        "type" : "Instance",
+        "name" : "compressor1",
+        "path" : "",
+        "params" : { }
+      }
+    } ]
+  },
+  "network" : {
+    "version" : 0,
+    "groups" : [ ],
+    "hubs" : [ ]
+  },
+  "accessControl" : {
+    "apiKeys" : [ ],
+    "version" : 0,
+    "roles" : [ {
+      "name" : "admin",
+      "policyVersion" : 1,
+      "claims" : [ {
+        "resources" : [ "*" ],
+        "actions" : [ "*" ]
+      } ]
+    }, {
+      "name" : "default",
+      "policyVersion" : 1,
+      "claims" : [ {
+        "resources" : [ "*" ],
+        "actions" : [ "read" ]
+      }, {
+        "resources" : [ "connection", "instance", "pipeline" ],
+        "actions" : [ "*" ]
+      } ]
+    } ],
+    "users" : [ {
+      "name" : "administrator",
+      "credentials" : {
+        "salt" : "uUOmAi4eJ40ni70s696Y5A==",
+        "hashedPassword" : "YpDHaodvAUOrzVx/ConbK2XyZ5FrI8OieP4BNJm2blveheVAn8tChvTng0ZW2vgTbIOEEwMnn1XviJhc6q8bcw=="
+      },
+      "policyVersion" : 1,
+      "roles" : [ "admin" ],
+      "claims" : [ ]
+    } ]
+  },
+  "system" : {
+    "version" : 0,
+    "variables" : [ ],
+    "secrets" : [ ],
+    "certificates" : [ ],
+    "settings" : {
+      "version" : 1,
+      "directories" : { },
+      "api" : {
+        "sessionTimeout" : {
+          "duration" : 8,
+          "units" : "Hours"
+        },
+        "authenticationPreference" : "STAY_LOGGED_IN"
+      },
+      "configuration" : {
+        "scheme" : "http",
+        "schemeCertificate" : "",
+        "port" : 45245,
+        "centralConfig" : false,
+        "autoSaveIntervalSeconds" : 60,
+        "backupCopies" : 50
+      },
+      "hbMqttBroker" : {
+        "enabled" : false,
+        "allowAnonymous" : true,
+        "endpoints" : [ {
+          "hostname" : "0.0.0.0",
+          "port" : 1885,
+          "useSSL" : false,
+          "certificateKeyAlias" : "",
+          "protocol" : "mqtt.tcp"
+        }, {
+          "hostname" : "0.0.0.0",
+          "port" : 1886,
+          "useSSL" : false,
+          "certificateKeyAlias" : "",
+          "protocol" : "mqtt.ws"
+        } ]
+      },
+      "httpServer" : {
+        "hostname" : "0.0.0.0",
+        "port" : 8885,
+        "useHttps" : false,
+        "schemeCertificate" : "",
+        "allowAnonymous" : false,
+        "authenticationModes" : [ "API_KEY" ]
+      },
+      "serversConfig" : {
+        "i3xServer" : {
+          "enabled" : false
+        },
+        "mcpServer" : {
+          "enabled" : false,
+          "configTools" : "disabled"
+        },
+        "restDataServer" : {
+          "enabled" : false
+        }
+      },
+      "log" : {
+        "debugLogging" : "NONE",
+        "fileSizeMB" : 100,
+        "logAuditEvents" : false
+      },
+      "redundancy" : {
+        "backup" : {
+          "enabled" : false,
+          "primary" : {
+            "uri" : "",
+            "pingIntervalSeconds" : 10,
+            "pingAttempts" : 1
+          }
+        }
+      },
+      "expressionEngine" : {
+        "allowExpressionEval" : false,
+        "allowEnvironmentVariables" : false,
+        "expressionEngineTimeoutSeconds" : 10,
+        "hubBindingName" : "hub",
+        "allowExpressionImports" : false
+      },
+      "backup" : {
+        "mode" : "disabled",
+        "cronSchedule" : "0 3 * * *",
+        "repo" : {
+          "type" : "git",
+          "name" : "HubBackup",
+          "uri" : "",
+          "author" : "HighByte IntelligenceHub",
+          "email" : "<>",
+          "auth" : {
+            "type" : "none"
+          }
+        },
+        "branch" : "highbyte-backup",
+        "deployFile" : "intelligencehub-deployment.json"
+      }
+    }
+  },
+  "identityProviders" : { }
+}
