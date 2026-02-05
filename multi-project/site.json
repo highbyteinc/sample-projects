@@ -65,14 +65,7 @@
 				"settings": {
 					"database": "serviceinfo",
 					"username": "highbyte",
-					"password": {
-						"type": "Encrypted",
-						"value": {
-							"keyId": "gcqkahr8pj+67AXASPb5dw==",
-							"iv": "oXPQ/hkNS2gm/U6bgh9qhA==",
-							"ciphertext": "RzPQmgwlQZJrf3Y+q0yDtw=="
-						}
-					},
+					"password": "password",
 					"strategy": {
 						"type": "default"
 					}
