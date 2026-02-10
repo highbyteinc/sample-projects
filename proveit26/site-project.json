@@ -6,164 +6,1808 @@
     "build" : "2026.2.5.212",
     "stage" : "Alpha"
   },
-  "project" : {
-    "version" : 13,
-    "connections" : [ ],
-    "conditions" : [ ],
-    "inputs" : [ ],
-    "outputs" : [ ],
-    "modeling" : {
-      "models" : [ {
-        "name" : "Boiler",
-        "tags" : [ ],
-        "attributes" : [ {
-          "attributeType" : "Internal",
-          "name" : "temp",
-          "nullable" : false,
-          "required" : false,
-          "array" : false,
-          "internalType" : "Any"
-        }, {
-          "attributeType" : "Internal",
-          "name" : "pressure",
-          "nullable" : false,
-          "required" : false,
-          "array" : false,
-          "internalType" : "Any"
-        } ]
-      }, {
-        "name" : "Compressor",
-        "tags" : [ ],
-        "attributes" : [ {
-          "attributeType" : "Internal",
-          "name" : "temp",
-          "nullable" : false,
-          "required" : false,
-          "array" : false,
-          "internalType" : "Any"
-        }, {
-          "attributeType" : "Internal",
-          "name" : "pressure",
-          "nullable" : false,
-          "required" : false,
-          "array" : false,
-          "internalType" : "Any"
-        }, {
-          "attributeType" : "Internal",
-          "name" : "cycleCount",
-          "nullable" : false,
-          "required" : false,
-          "array" : false,
-          "internalType" : "Any"
-        } ]
-      } ],
-      "instances" : [ {
-        "name" : "boiler1",
-        "tags" : [ ],
-        "model" : "Boiler",
-        "rootValueAs" : "Object",
-        "template" : {
-          "type" : "Off"
-        },
-        "executeMode" : "V4",
-        "initExpression" : "",
-        "attributes" : [ {
-          "name" : "temp",
-          "expression" : {
-            "type" : "JavaScript",
-            "expression" : "return Math.random();"
-          }
-        }, {
-          "name" : "pressure",
-          "expression" : {
-            "type" : "JavaScript",
-            "expression" : "return Math.random();"
-          }
-        } ],
-        "parameters" : {
-          "type" : "EmptyParameters"
-        }
-      }, {
-        "name" : "compressor1",
-        "tags" : [ ],
-        "model" : "Compressor",
-        "rootValueAs" : "Object",
-        "template" : {
-          "type" : "Off"
-        },
-        "executeMode" : "V4",
-        "initExpression" : "",
-        "attributes" : [ {
-          "name" : "temp",
-          "expression" : {
-            "type" : "JavaScript",
-            "expression" : "return Math.random();"
-          }
-        }, {
-          "name" : "pressure",
-          "expression" : {
-            "type" : "JavaScript",
-            "expression" : "return Math.random();"
-          }
-        }, {
-          "name" : "cycleCount",
-          "expression" : {
-            "type" : "JavaScript",
-            "expression" : "return Math.random();"
-          }
-        } ],
-        "parameters" : {
-          "type" : "EmptyParameters"
-        }
-      } ]
-    },
-    "pipelines" : [ ],
-    "tags" : [ ],
-    "functions" : [ ],
-    "namespace" : [ {
-      "type" : "local",
-      "id" : "02ea4625-da7c-401f-a04f-713dce2b0511",
-      "name" : "RD",
-      "reference" : {
-        "type" : "Empty"
-      }
-    }, {
-      "type" : "local",
-      "id" : "997dcc08-a497-4442-9a11-c68a261fc0f0",
-      "name" : "Desk1",
-      "parentNamespaceId" : "02ea4625-da7c-401f-a04f-713dce2b0511",
-      "reference" : {
-        "type" : "Empty"
-      }
-    }, {
-      "type" : "local",
-      "id" : "7554d2ae-8ff3-46a7-bf93-c2839e264802",
-      "name" : "Boiler1",
-      "parentNamespaceId" : "997dcc08-a497-4442-9a11-c68a261fc0f0",
-      "reference" : {
-        "type" : "Instance",
-        "name" : "boiler1",
-        "path" : "",
-        "params" : { }
-      }
-    }, {
-      "type" : "local",
-      "id" : "208306c9-5531-4c81-96f1-3c1e2fd42e03",
-      "name" : "Compressor",
-      "parentNamespaceId" : "997dcc08-a497-4442-9a11-c68a261fc0f0",
-      "reference" : {
-        "type" : "Instance",
-        "name" : "compressor1",
-        "path" : "",
-        "params" : { }
-      }
-    } ]
-  },
-  "network" : {
-    "version" : 0,
-    "groups" : [ ],
-    "hubs" : [ ]
-  },
+"project": {
+		"version": 13,
+		"connections": [],
+		"inputs": [],
+		"outputs": [],
+		"modeling": {
+			"models": [
+				{
+					"name": "CHR",
+					"groupAs": "/proveit",
+					"tags": [
+						"proveit26"
+					],
+					"attributes": [
+						{
+							"attributeType": "Object",
+							"name": "timeRef",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"attributes": [
+								{
+									"attributeType": "Internal",
+									"name": "dataSetId",
+									"description": "Set identifier for grouping related records",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Int64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "timestampOrigin",
+									"description": "Timestamp when events or records occurred",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "DateTime"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "secondsEclipsed",
+									"description": "Elapsed time measurement in seconds",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Int64"
+								}
+							]
+						},
+						{
+							"attributeType": "Object",
+							"name": "main",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"attributes": [
+								{
+									"attributeType": "Internal",
+									"name": "batchId",
+									"description": "Batch identifier associated with the chromatography run",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "String"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "recipe",
+									"description": "Recipe name used for the chromatography process",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "String"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "formula",
+									"description": "Formula name associated with the chromatography unit",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "String"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "phase",
+									"description": "Current processing phase of the chromatography system",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "String"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "state",
+									"description": "Operational state of the chromatography system",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "String"
+								}
+							]
+						},
+						{
+							"attributeType": "Object",
+							"name": "process",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"attributes": [
+								{
+									"attributeType": "Internal",
+									"name": "uvAbsorbanceAU",
+									"description": "UV absorbance measurement in absorbance units used to detect product concentration",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "conductivityMsCm",
+									"description": "Conductivity of the process stream measured in millisiemens per centimeter",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "culturePH",
+									"description": "Measured pH of the process stream",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "columnPressureBar",
+									"description": "Pressure across the chromatography column in bar",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "systemPressureBar",
+									"description": "Overall system pressure measured in bar",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "flowRateLHr",
+									"description": "Process flow rate measured in liters per hour",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "productCollectionStatus",
+									"description": "Indicates whether product is currently being collected",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Boolean"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "wasteDiversionStatus",
+									"description": "Indicates whether the process stream is being diverted to waste",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Boolean"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "systemTemperatureDegC",
+									"description": "System temperature measured in degrees Celsius",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "CellCount",
+					"groupAs": "/proveit",
+					"tags": [
+						"proveit26"
+					],
+					"attributes": [
+						{
+							"attributeType": "Object",
+							"name": "process",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"attributes": [
+								{
+									"attributeType": "Internal",
+									"name": "viableConcentrationCellsMl",
+									"description": "Viable cell concentration measured in cells per milliliter",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "viabilityPct",
+									"description": "Percentage of viable cells relative to total cell population",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "totalConcentrationCellsMl",
+									"description": "Total cell concentration measured in cells per milliliter",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								}
+							]
+						},
+						{
+							"attributeType": "Object",
+							"name": "cultureHealth",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"attributes": [
+								{
+									"attributeType": "Internal",
+									"name": "aggregationIndexPct",
+									"description": "Percentage-based index indicating the degree of cell aggregation",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "meanCellDiameterMicrometers",
+									"description": "Mean diameter of cells measured in micrometers",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "coefficientOfVariationPct",
+									"description": "Coefficient of variation expressed as a percentage, indicating size distribution uniformity",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								}
+							]
+						},
+						{
+							"attributeType": "Object",
+							"name": "quality",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"attributes": [
+								{
+									"attributeType": "Internal",
+									"name": "detectionConfidencePct",
+									"description": "Confidence level of cell detection expressed as a percentage",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "focusQualityScore",
+									"description": "Score indicating image focus quality during analysis",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "analysisStatus",
+									"description": "Status of the cell count analysis (e.g., Completed, Failed, In Progress)",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "String"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "SUB",
+					"groupAs": "/proveit",
+					"tags": [
+						"proveit26"
+					],
+					"attributes": [
+						{
+							"attributeType": "Object",
+							"name": "timeRef",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"attributes": [
+								{
+									"attributeType": "Internal",
+									"name": "dataSetId",
+									"description": "Set identifier for grouping related records",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Int64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "timestampOrigin",
+									"description": "Timestamp when events or records occurred",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "DateTime"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "secondsEclipsed",
+									"description": "Elapsed time measurement in seconds",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Int64"
+								}
+							]
+						},
+						{
+							"attributeType": "Object",
+							"name": "main",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"attributes": [
+								{
+									"attributeType": "Internal",
+									"name": "batchId",
+									"description": "Batch identifier for processing units",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "String"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "recipe",
+									"description": "Recipe for unit 250 (e.g., PR_SUB_PROC, PR_SUB_PTEST)",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "String"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "formula",
+									"description": "Formula associated with unit 250",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "String"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "phase",
+									"description": "Process phase (e.g., PH_SUB_GROWTH, PH_SUB_HARV)",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "String"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "state",
+									"description": "Operational state of the unit (Held, Idle, Running)",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "String"
+								}
+							]
+						},
+						{
+							"attributeType": "Object",
+							"name": "vessel",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"attributes": [
+								{
+									"attributeType": "Internal",
+									"name": "temperatureDegC",
+									"description": "Primary temperature inside the bioreactor; maintains optimal cell metabolism and prevents thermal cell death",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "culturePH",
+									"description": "Acidity/alkalinity of the cell culture medium controlling enzyme activity and nutrient uptake",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "agitatorSpeedRPM",
+									"description": "Agitator rotation speed controlling mixing intensity, oxygen transfer, and shear stress",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "pressurePSI",
+									"description": "Internal bioreactor pressure for maintaining sterile conditions and gas transfer rates",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								}
+							]
+						},
+						{
+							"attributeType": "Object",
+							"name": "feed",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"attributes": [
+								{
+									"attributeType": "Internal",
+									"name": "nutrient1FlowMIMin",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "nutrient1Status",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "String"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "nutrient2FlowMIMin",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "nutrient2Status",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "String"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "mediaFlowLHr",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "mediaStatus",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "String"
+								}
+							]
+						},
+						{
+							"attributeType": "Object",
+							"name": "massBalance",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"attributes": [
+								{
+									"attributeType": "Internal",
+									"name": "weightKg",
+									"description": "Bioreactor weight in kilograms used for mass balance calculations",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "pureOFlowSLPM",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "airFlowSLPM",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "cO2FlowSLPM",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "airValvePct",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "PureOValvePct",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "cO2ValvePct",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "SUM",
+					"groupAs": "/proveit",
+					"tags": [
+						"proveit26"
+					],
+					"attributes": [
+						{
+							"attributeType": "Object",
+							"name": "timeRef",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"attributes": [
+								{
+									"attributeType": "Internal",
+									"name": "dataSetId",
+									"description": "Set identifier for grouping related records",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Int64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "timestampOrigin",
+									"description": "Timestamp when events or records occurred",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "DateTime"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "secondsEclipsed",
+									"description": "Elapsed time measurement in seconds",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Int64"
+								}
+							]
+						},
+						{
+							"attributeType": "Object",
+							"name": "main",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"attributes": [
+								{
+									"attributeType": "Internal",
+									"name": "batchId",
+									"description": "Batch identifier associated with the SUM process",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "String"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "recipe",
+									"description": "Recipe identifier used for the SUM process",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "String"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "formula",
+									"description": "Formula name associated with the SUM 500 unit",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "String"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "phase",
+									"description": "Current operational phase of the SUM process",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "String"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "state",
+									"description": "Operational state of the SUM unit",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "String"
+								}
+							]
+						},
+						{
+							"attributeType": "Object",
+							"name": "process",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"attributes": [
+								{
+									"attributeType": "Internal",
+									"name": "culturePH",
+									"description": "Measured pH of the culture during the SUM process",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "weightKg",
+									"description": "Measured vessel or system weight in kilograms",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "temperatureDegC",
+									"description": "Process temperature measured in degrees Celsius",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "agitatorSpeedRPM",
+									"description": "Agitator rotational speed measured in RPM",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "dosingFlowLMin",
+									"description": "Dosing flow rate measured in liters per minute",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "TFF",
+					"groupAs": "/proveit",
+					"tags": [
+						"proveit26"
+					],
+					"attributes": [
+						{
+							"attributeType": "Object",
+							"name": "timeRef",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"attributes": [
+								{
+									"attributeType": "Internal",
+									"name": "dataSetId",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Int64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "timestampOrigin",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "DateTime"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "secondsElapsed",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Int64"
+								}
+							]
+						},
+						{
+							"attributeType": "Object",
+							"name": "main",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"attributes": [
+								{
+									"attributeType": "Internal",
+									"name": "batchId",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "String"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "recipe",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "String"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "formula",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "String"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "phase",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "String"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "state",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "String"
+								}
+							]
+						},
+						{
+							"attributeType": "Object",
+							"name": "process",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"attributes": [
+								{
+									"attributeType": "Internal",
+									"name": "transmembranePressure_psi",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Int64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "feedFluxLMH",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Int64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "permeateFluxLMH",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Int64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "feedFlowLMH",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Int64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "permeateFlowLMH",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Int64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "uvAbsorbanceAU",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Int64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "conductivityMsCm",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Int64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "weightKg",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Int64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "differentialPressurePsi",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Int64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "pressureValvePct",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Int64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "temperatureC",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Int64"
+								}
+							]
+						}
+					]
+				}
+			],
+			"instances": [
+				{
+					"name": "CHR",
+					"groupAs": "/proveit",
+					"tags": [
+						"proveit26"
+					],
+					"model": "CHR",
+					"rootValueAs": "Object",
+					"template": {
+						"type": "Off"
+					},
+					"executeMode": "V4",
+					"initExpression": "",
+					"attributes": [
+						{
+							"name": "timeRef",
+							"expression": {
+								"type": "Reference",
+								"reference": {
+									"type": "Empty"
+								}
+							},
+							"attributes": [
+								{
+									"name": "dataSetId",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return (Math.random() * 10);"
+									}
+								},
+								{
+									"name": "timestampOrigin",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return Date.now();"
+									}
+								},
+								{
+									"name": "secondsEclipsed",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return (Math.random() * 10000);"
+									}
+								}
+							]
+						},
+						{
+							"name": "main",
+							"expression": {
+								"type": "Reference",
+								"reference": {
+									"type": "Empty"
+								}
+							},
+							"attributes": [
+								{
+									"name": "batchId",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return \"1234\";"
+									}
+								},
+								{
+									"name": "recipe",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return \"default\";"
+									}
+								},
+								{
+									"name": "formula",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return \"default\";"
+									}
+								},
+								{
+									"name": "phase",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return \"pre\";"
+									}
+								},
+								{
+									"name": "state",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return \"running\";"
+									}
+								}
+							]
+						},
+						{
+							"name": "process",
+							"expression": {
+								"type": "Reference",
+								"reference": {
+									"type": "Empty"
+								}
+							},
+							"attributes": [
+								{
+									"name": "uvAbsorbanceAU",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return (Math.random() * 60);"
+									}
+								},
+								{
+									"name": "conductivityMsCm",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return (Math.random() * 60);"
+									}
+								},
+								{
+									"name": "culturePH",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return (Math.random() * 60);"
+									}
+								},
+								{
+									"name": "columnPressureBar",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return (Math.random() * 60);"
+									}
+								},
+								{
+									"name": "systemPressureBar",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return (Math.random() * 60);"
+									}
+								},
+								{
+									"name": "flowRateLHr",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return (Math.random() * 60);"
+									}
+								},
+								{
+									"name": "productCollectionStatus",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return (Math.random() * 60);"
+									}
+								},
+								{
+									"name": "wasteDiversionStatus",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return (Math.random() * 60);"
+									}
+								},
+								{
+									"name": "systemTemperatureDegC",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return (Math.random() * 60);"
+									}
+								}
+							]
+						}
+					],
+					"parameters": {
+						"type": "EmptyParameters"
+					}
+				},
+				{
+					"name": "CellCount",
+					"groupAs": "/proveit",
+					"tags": [
+						"proveit26"
+					],
+					"model": "CellCount",
+					"rootValueAs": "Object",
+					"template": {
+						"type": "Off"
+					},
+					"executeMode": "V4",
+					"initExpression": "",
+					"attributes": [
+						{
+							"name": "process",
+							"expression": {
+								"type": "Reference",
+								"reference": {
+									"type": "Empty"
+								}
+							},
+							"attributes": [
+								{
+									"name": "viableConcentrationCellsMl",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return (Math.random() * 60);"
+									}
+								},
+								{
+									"name": "viabilityPct",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return (Math.random() * 60);"
+									}
+								},
+								{
+									"name": "totalConcentrationCellsMl",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return (Math.random() * 60);"
+									}
+								}
+							]
+						},
+						{
+							"name": "cultureHealth",
+							"expression": {
+								"type": "Reference",
+								"reference": {
+									"type": "Empty"
+								}
+							},
+							"attributes": [
+								{
+									"name": "aggregationIndexPct",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return (Math.random() * 100);"
+									}
+								},
+								{
+									"name": "meanCellDiameterMicrometers",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return (Math.random() * 60);"
+									}
+								},
+								{
+									"name": "coefficientOfVariationPct",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return (Math.random() * 60);"
+									}
+								}
+							]
+						},
+						{
+							"name": "quality",
+							"expression": {
+								"type": "Reference",
+								"reference": {
+									"type": "Empty"
+								}
+							},
+							"attributes": [
+								{
+									"name": "detectionConfidencePct",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return (Math.random() * 60);"
+									}
+								},
+								{
+									"name": "focusQualityScore",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return (Math.random() * 60);"
+									}
+								},
+								{
+									"name": "analysisStatus",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return \"running\";"
+									}
+								}
+							]
+						}
+					],
+					"parameters": {
+						"type": "EmptyParameters"
+					}
+				},
+				{
+					"name": "SUB",
+					"groupAs": "/proveit",
+					"tags": [
+						"proveit26"
+					],
+					"model": "SUB",
+					"rootValueAs": "Object",
+					"template": {
+						"type": "Off"
+					},
+					"executeMode": "V4",
+					"initExpression": "",
+					"attributes": [
+						{
+							"name": "timeRef",
+							"expression": {
+								"type": "Reference",
+								"reference": {
+									"type": "Empty"
+								}
+							},
+							"attributes": [
+								{
+									"name": "dataSetId",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return 0;"
+									}
+								},
+								{
+									"name": "timestampOrigin",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return (Date.now());"
+									}
+								},
+								{
+									"name": "secondsEclipsed",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return (Math.random() * 1000);"
+									}
+								}
+							]
+						},
+						{
+							"name": "main",
+							"expression": {
+								"type": "Reference",
+								"reference": {
+									"type": "Empty"
+								}
+							},
+							"attributes": [
+								{
+									"name": "batchId",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return \"1234\";"
+									}
+								},
+								{
+									"name": "recipe",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return \"default\";"
+									}
+								},
+								{
+									"name": "formula",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return \"default\";"
+									}
+								},
+								{
+									"name": "phase",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return \"pre\";"
+									}
+								},
+								{
+									"name": "state",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return \"running\";"
+									}
+								}
+							]
+						},
+						{
+							"name": "vessel",
+							"expression": {
+								"type": "Reference",
+								"reference": {
+									"type": "Empty"
+								}
+							},
+							"attributes": [
+								{
+									"name": "temperatureDegC",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return (Math.random() * 100);"
+									}
+								},
+								{
+									"name": "culturePH",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return (Math.random() * 60);"
+									}
+								},
+								{
+									"name": "agitatorSpeedRPM",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return (Math.random() * 60);"
+									}
+								},
+								{
+									"name": "pressurePSI",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return (Math.random() * 60);"
+									}
+								}
+							]
+						},
+						{
+							"name": "feed",
+							"expression": {
+								"type": "Reference",
+								"reference": {
+									"type": "Empty"
+								}
+							},
+							"attributes": [
+								{
+									"name": "nutrient1FlowMIMin",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return (Math.random() * 60);"
+									}
+								},
+								{
+									"name": "nutrient1Status",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return \"good\";"
+									}
+								},
+								{
+									"name": "nutrient2FlowMIMin",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return (Math.random() * 60);"
+									}
+								},
+								{
+									"name": "nutrient2Status",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return \"good\";"
+									}
+								},
+								{
+									"name": "mediaFlowLHr",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return (Math.random() * 60);"
+									}
+								},
+								{
+									"name": "mediaStatus",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return \"good\";"
+									}
+								}
+							]
+						},
+						{
+							"name": "massBalance",
+							"expression": {
+								"type": "Reference",
+								"reference": {
+									"type": "Empty"
+								}
+							},
+							"attributes": [
+								{
+									"name": "weightKg",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return (Math.random() * 60);"
+									}
+								},
+								{
+									"name": "pureOFlowSLPM",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return (Math.random() * 60);"
+									}
+								},
+								{
+									"name": "airFlowSLPM",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return (Math.random() * 60);"
+									}
+								},
+								{
+									"name": "cO2FlowSLPM",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return (Math.random() * 60);"
+									}
+								},
+								{
+									"name": "airValvePct",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return (Math.random() * 60);"
+									}
+								},
+								{
+									"name": "PureOValvePct",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return (Math.random() * 60);"
+									}
+								},
+								{
+									"name": "cO2ValvePct",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return (Math.random() * 60);"
+									}
+								}
+							]
+						}
+					],
+					"parameters": {
+						"type": "EmptyParameters"
+					}
+				},
+				{
+					"name": "SUM",
+					"groupAs": "/proveit",
+					"tags": [
+						"proveit26"
+					],
+					"model": "SUM",
+					"rootValueAs": "Object",
+					"template": {
+						"type": "Off"
+					},
+					"executeMode": "V4",
+					"initExpression": "",
+					"attributes": [
+						{
+							"name": "timeRef",
+							"expression": {
+								"type": "Reference",
+								"reference": {
+									"type": "Empty"
+								}
+							},
+							"attributes": [
+								{
+									"name": "dataSetId",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return \"1234\";"
+									}
+								},
+								{
+									"name": "timestampOrigin",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return (Date.now());"
+									}
+								},
+								{
+									"name": "secondsEclipsed",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return (Math.random() * 60);"
+									}
+								}
+							]
+						},
+						{
+							"name": "main",
+							"expression": {
+								"type": "Reference",
+								"reference": {
+									"type": "Empty"
+								}
+							},
+							"attributes": [
+								{
+									"name": "batchId",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return \"1234\";"
+									}
+								},
+								{
+									"name": "recipe",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return \"default\";"
+									}
+								},
+								{
+									"name": "formula",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return \"default\";"
+									}
+								},
+								{
+									"name": "phase",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return \"pre\";"
+									}
+								},
+								{
+									"name": "state",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return \"running\";"
+									}
+								}
+							]
+						},
+						{
+							"name": "process",
+							"expression": {
+								"type": "Reference",
+								"reference": {
+									"type": "Empty"
+								}
+							},
+							"attributes": [
+								{
+									"name": "culturePH",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return (Math.random() * 60);"
+									}
+								},
+								{
+									"name": "weightKg",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return (Math.random() * 60);"
+									}
+								},
+								{
+									"name": "temperatureDegC",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return (Math.random() * 60);"
+									}
+								},
+								{
+									"name": "agitatorSpeedRPM",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return (Math.random() * 60);"
+									}
+								},
+								{
+									"name": "dosingFlowLMin",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return (Math.random() * 60);"
+									}
+								}
+							]
+						}
+					],
+					"parameters": {
+						"type": "EmptyParameters"
+					}
+				},
+				{
+					"name": "TFF",
+					"groupAs": "/proveit",
+					"tags": [
+						"proveit26"
+					],
+					"model": "TFF",
+					"rootValueAs": "Object",
+					"template": {
+						"type": "Off"
+					},
+					"executeMode": "V4",
+					"initExpression": "",
+					"attributes": [
+						{
+							"name": "timeRef",
+							"expression": {
+								"type": "Reference",
+								"reference": {
+									"type": "Empty"
+								}
+							},
+							"attributes": [
+								{
+									"name": "dataSetId",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return \"1234\";"
+									}
+								},
+								{
+									"name": "timestampOrigin",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return (Date.now());"
+									}
+								},
+								{
+									"name": "secondsElapsed",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return (Math.random() * 60);"
+									}
+								}
+							]
+						},
+						{
+							"name": "main",
+							"expression": {
+								"type": "Reference",
+								"reference": {
+									"type": "Empty"
+								}
+							},
+							"attributes": [
+								{
+									"name": "batchId",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return \"1234\";"
+									}
+								},
+								{
+									"name": "recipe",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return \"default\";"
+									}
+								},
+								{
+									"name": "formula",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return \"default\";"
+									}
+								},
+								{
+									"name": "phase",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return \"pre\";"
+									}
+								},
+								{
+									"name": "state",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return \"running\";"
+									}
+								}
+							]
+						},
+						{
+							"name": "process",
+							"expression": {
+								"type": "Reference",
+								"reference": {
+									"type": "Empty"
+								}
+							},
+							"attributes": [
+								{
+									"name": "transmembranePressure_psi",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return (Math.random() * 60);"
+									}
+								},
+								{
+									"name": "feedFluxLMH",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return (Math.random() * 60);"
+									}
+								},
+								{
+									"name": "permeateFluxLMH",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return (Math.random() * 60);"
+									}
+								},
+								{
+									"name": "feedFlowLMH",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return (Math.random() * 60);"
+									}
+								},
+								{
+									"name": "permeateFlowLMH",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return (Math.random() * 60);"
+									}
+								},
+								{
+									"name": "uvAbsorbanceAU",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return (Math.random() * 60);"
+									}
+								},
+								{
+									"name": "conductivityMsCm",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return (Math.random() * 60);"
+									}
+								},
+								{
+									"name": "weightKg",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return (Math.random() * 60);"
+									}
+								},
+								{
+									"name": "differentialPressurePsi",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return (Math.random() * 60);"
+									}
+								},
+								{
+									"name": "pressureValvePct",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return (Math.random() * 60);"
+									}
+								},
+								{
+									"name": "temperatureC",
+									"expression": {
+										"type": "JavaScript",
+										"expression": "return (Math.random() * 60);"
+									}
+								}
+							]
+						}
+					],
+					"parameters": {
+						"type": "EmptyParameters"
+					}
+				}
+			]
+		},
+		"conditions": [],
+		"functions": [],
+		"tags": [
+			{
+				"name": "proveit26"
+			}
+		],
+		"pipelines": [],
+		"namespace": []
+	},
+	"network": {
+		"groups": [],
+		"hubs": []
+	},
   "accessControl" : {
     "apiKeys" : [ ],
     "version" : 0,
