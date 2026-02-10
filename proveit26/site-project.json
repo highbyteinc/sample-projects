@@ -1796,24 +1796,8 @@
     "pipelines" : [ ],
     "namespace" : [ {
       "type" : "local",
-      "id" : "f405a0cf-437d-4ed6-b4aa-55a3e790ba3a",
-      "name" : "PointThreeTherapeutics",
-      "reference" : {
-        "type" : "Empty"
-      }
-    }, {
-      "type" : "local",
-      "id" : "9023edb5-605a-4fee-b80b-ee2886b73ab4",
-      "name" : "Boston",
-      "parentNamespaceId" : "f405a0cf-437d-4ed6-b4aa-55a3e790ba3a",
-      "reference" : {
-        "type" : "Empty"
-      }
-    }, {
-      "type" : "local",
       "id" : "2738cc3a-de3c-4cb4-b83e-39f86567e7e5",
       "name" : "Manufacturing",
-      "parentNamespaceId" : "9023edb5-605a-4fee-b80b-ee2886b73ab4",
       "reference" : {
         "type" : "Empty"
       }
