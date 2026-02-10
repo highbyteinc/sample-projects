@@ -31,7 +31,7 @@
 									"nullable": false,
 									"required": false,
 									"array": false,
-									"internalType": "Any"
+									"internalType": "String"
 								},
 								{
 									"attributeType": "Internal",
@@ -39,23 +39,15 @@
 									"nullable": false,
 									"required": false,
 									"array": false,
-									"internalType": "Any"
+									"internalType": "String"
 								},
 								{
 									"attributeType": "Internal",
-									"name": "Analysis_Date",
+									"name": "Analysis_DateTime",
 									"nullable": false,
 									"required": false,
 									"array": false,
-									"internalType": "Any"
-								},
-								{
-									"attributeType": "Internal",
-									"name": "Analysis_Time",
-									"nullable": false,
-									"required": false,
-									"array": false,
-									"internalType": "Any"
+									"internalType": "DateTime"
 								}
 							]
 						},
@@ -186,7 +178,7 @@
 									"nullable": false,
 									"required": false,
 									"array": false,
-									"internalType": "String"
+									"internalType": "DateTime"
 								},
 								{
 									"attributeType": "Internal",
@@ -372,7 +364,7 @@
 									"nullable": false,
 									"required": false,
 									"array": false,
-									"internalType": "String"
+									"internalType": "DateTime"
 								},
 								{
 									"attributeType": "Internal",
@@ -624,7 +616,7 @@
 									"nullable": false,
 									"required": false,
 									"array": false,
-									"internalType": "String"
+									"internalType": "DateTime"
 								},
 								{
 									"attributeType": "Internal",
@@ -762,7 +754,7 @@
 									"nullable": false,
 									"required": false,
 									"array": false,
-									"internalType": "String"
+									"internalType": "DateTime"
 								},
 								{
 									"attributeType": "Internal",
@@ -949,24 +941,11 @@
 									"defaultValue": "BatchID"
 								},
 								{
-									"name": "Analysis_Date",
+									"name": "Analysis_DateTime",
 									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": "DateTime"
-								},
-								{
-									"name": "Analysis_Time",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": "Time"
+										"type": "JavaScript",
+										"expression": "return (Date.now());"
+									}
 								}
 							]
 						},
@@ -1131,12 +1110,9 @@
 								{
 									"name": "Timestamp_Origin",
 									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": "Timestamp"
+										"type": "JavaScript",
+										"expression": "return (Date.now());"
+									}
 								},
 								{
 									"name": "Seconds_Eclipsed",
@@ -1370,10 +1346,8 @@
 								{
 									"name": "Timestamp_Origin",
 									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
+										"type": "JavaScript",
+										"expression": "return (Date.now());"
 									},
 									"defaultValue": "Timestamp"
 								},
@@ -1691,12 +1665,9 @@
 								{
 									"name": "Timestamp_Origin",
 									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": "DateTime"
+										"type": "JavaScript",
+										"expression": "return (Date.now());"
+									}
 								},
 								{
 									"name": "Seconds_Eclipsed",
@@ -1870,12 +1841,9 @@
 								{
 									"name": "Timestamp_Origin",
 									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": "Timestamp"
+										"type": "JavaScript",
+										"expression": "return (Date.now());"
+									}
 								},
 								{
 									"name": "Seconds_Eclipsed",
