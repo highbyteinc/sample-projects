@@ -1,0 +1,2212 @@
+{
+	"productInfo": {
+		"company": "HighByte",
+		"product": "IntelligenceHub",
+		"version": "4.4.0",
+		"build": "2026.2.9.224",
+		"stage": "Alpha"
+	},
+	"project": {
+		"version": 13,
+		"connections": [],
+		"inputs": [],
+		"outputs": [],
+		"modeling": {
+			"models": [
+				{
+					"name": "Cell_Count",
+					"description": "",
+					"tags": [],
+					"attributes": [
+						{
+							"attributeType": "Object",
+							"name": "Sample",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"attributes": [
+								{
+									"attributeType": "Internal",
+									"name": "Sample_ID",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Any"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "Batch_ID",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Any"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "Analysis_Date",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Any"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "Analysis_Time",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Any"
+								}
+							]
+						},
+						{
+							"attributeType": "Object",
+							"name": "Process",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"attributes": [
+								{
+									"attributeType": "Internal",
+									"name": "Viable_Concentration_mL",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "Viability_Pct",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "Total_Concentration_mL",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								}
+							]
+						},
+						{
+							"attributeType": "Object",
+							"name": "Culture_Health",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"attributes": [
+								{
+									"attributeType": "Internal",
+									"name": "Aggregation_Index_Pct",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "Mean_Cell_Diameter_Micrometer",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "Coefficient_of_Variation_Pct",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								}
+							]
+						},
+						{
+							"attributeType": "Object",
+							"name": "Quality",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"attributes": [
+								{
+									"attributeType": "Internal",
+									"name": "Detection_Confidence_Pct",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "Focus_Quality_Score_Pct",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "Analysis_Status",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "String"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Concentrate_TFF",
+					"description": "",
+					"tags": [],
+					"attributes": [
+						{
+							"attributeType": "Object",
+							"name": "Time_Ref",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"attributes": [
+								{
+									"attributeType": "Internal",
+									"name": "Data_Set_ID",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Int64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "Timestamp_Origin",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "String"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "Seconds_Eclipsed",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Int64"
+								}
+							]
+						},
+						{
+							"attributeType": "Object",
+							"name": "Main",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"attributes": [
+								{
+									"attributeType": "Internal",
+									"name": "Batch_ID",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "String"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "Recipe",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "String"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "Formula",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "String"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "Phase",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "String"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "State",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "String"
+								}
+							]
+						},
+						{
+							"attributeType": "Object",
+							"name": "Process",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"attributes": [
+								{
+									"attributeType": "Internal",
+									"name": "Transmembrane_Pressure_PSI",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "Feed_Flux_LMH",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "Permeate_Flux_LMH",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "Feed_Flow_LPM",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "Permeate_Flow_LPM",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "UV_Absorbance_AU",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "Conductivity_mS_cm",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "Weight_kg",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "Differential_Pressure_PSI",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "Pressure_Valve_Pct",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "Temperature_DegC",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Ferment_SUB",
+					"description": "",
+					"tags": [],
+					"attributes": [
+						{
+							"attributeType": "Object",
+							"name": "Time_Ref",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"attributes": [
+								{
+									"attributeType": "Internal",
+									"name": "Data_Set_ID",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Int64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "Timestamp_Origin",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "String"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "Seconds_Eclipsed",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Int64"
+								}
+							]
+						},
+						{
+							"attributeType": "Object",
+							"name": "Main",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"attributes": [
+								{
+									"attributeType": "Internal",
+									"name": "Batch_ID",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "String"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "Recipe",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "String"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "Formula",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "String"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "Phase",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "String"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "State",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "String"
+								}
+							]
+						},
+						{
+							"attributeType": "Object",
+							"name": "Vessel",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"attributes": [
+								{
+									"attributeType": "Internal",
+									"name": "Temperature_DegC",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "Culture_pH",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "Agitator_Speed_RPM",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "Pressure_PSI",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								}
+							]
+						},
+						{
+							"attributeType": "Object",
+							"name": "Feed",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"attributes": [
+								{
+									"attributeType": "Internal",
+									"name": "Nutrient1_Flow_ml_Min",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "Nutrient1_Status",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "String"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "Nutrient2_Flow_ml_Min",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "Nutrient2_Status",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "String"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "Media_Flow_L_Hr",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "Media_Status",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "String"
+								}
+							]
+						},
+						{
+							"attributeType": "Object",
+							"name": "Mass_Balance",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"attributes": [
+								{
+									"attributeType": "Internal",
+									"name": "Weight_kg",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "Air_Flow_SLPM",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "PureO_Flow_SLPM",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "CO2_Flow_SLPM",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "Air_Valve_Pct",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "PureO_Valve_Pct",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "CO2_Valve_Pct",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "MediaPrep_SUM",
+					"description": "",
+					"tags": [],
+					"attributes": [
+						{
+							"attributeType": "Object",
+							"name": "Time_Ref",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"attributes": [
+								{
+									"attributeType": "Internal",
+									"name": "Data_Set_ID",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Int64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "Timestamp_Origin",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "String"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "Seconds_Eclipsed",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Int64"
+								}
+							]
+						},
+						{
+							"attributeType": "Object",
+							"name": "Main",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"attributes": [
+								{
+									"attributeType": "Internal",
+									"name": "Batch_ID",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "String"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "Recipe",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "String"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "Formula",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "String"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "Phase",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "String"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "State",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "String"
+								}
+							]
+						},
+						{
+							"attributeType": "Object",
+							"name": "Process",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"attributes": [
+								{
+									"attributeType": "Internal",
+									"name": "Culture_pH",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "Weight_kg",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "Temperature_DegC",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "Agitator_Speed_RPM",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "Dosing_Flow_L_Min",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Purify_CHR",
+					"description": "",
+					"tags": [],
+					"attributes": [
+						{
+							"attributeType": "Object",
+							"name": "Time_Ref",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"attributes": [
+								{
+									"attributeType": "Internal",
+									"name": "Data_Set_ID",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Int64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "Timestamp_Origin",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "String"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "Seconds_Eclipsed",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Int64"
+								}
+							]
+						},
+						{
+							"attributeType": "Object",
+							"name": "Main",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"attributes": [
+								{
+									"attributeType": "Internal",
+									"name": "Batch_ID",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "String"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "Recipe",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "String"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "Formula",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "String"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "Phase",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "String"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "State",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "String"
+								}
+							]
+						},
+						{
+							"attributeType": "Object",
+							"name": "Process",
+							"nullable": false,
+							"required": false,
+							"array": false,
+							"attributes": [
+								{
+									"attributeType": "Internal",
+									"name": "UV_Absorbance_AU",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "Conductivity_mS_cm",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "Culture_pH",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "Column_Pressure_bar",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "System_Pressure_bar",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "Flow_Rate_L_hr",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "Product_Collection_Status",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Boolean"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "Waste_Diversion_Status",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Boolean"
+								},
+								{
+									"attributeType": "Internal",
+									"name": "System_Temperature_DegC",
+									"nullable": false,
+									"required": false,
+									"array": false,
+									"internalType": "Real64"
+								}
+							]
+						}
+					]
+				}
+			],
+			"instances": [
+				{
+					"name": "Cell_Count_Instance_Lab",
+					"tags": [],
+					"model": "Cell_Count",
+					"rootValueAs": "Object",
+					"template": {
+						"type": "Off"
+					},
+					"executeMode": "V4",
+					"initExpression": "",
+					"attributes": [
+						{
+							"name": "Sample",
+							"expression": {
+								"type": "Reference",
+								"reference": {
+									"type": "Empty"
+								}
+							},
+							"attributes": [
+								{
+									"name": "Sample_ID",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": "SampleID"
+								},
+								{
+									"name": "Batch_ID",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": "BatchID"
+								},
+								{
+									"name": "Analysis_Date",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": "DateTime"
+								},
+								{
+									"name": "Analysis_Time",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": "Time"
+								}
+							]
+						},
+						{
+							"name": "Process",
+							"expression": {
+								"type": "Reference",
+								"reference": {
+									"type": "Empty"
+								}
+							},
+							"attributes": [
+								{
+									"name": "Viable_Concentration_mL",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": 123.4
+								},
+								{
+									"name": "Viability_Pct",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": 0.99
+								},
+								{
+									"name": "Total_Concentration_mL",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": 123.4
+								}
+							]
+						},
+						{
+							"name": "Culture_Health",
+							"expression": {
+								"type": "Reference",
+								"reference": {
+									"type": "Empty"
+								}
+							},
+							"attributes": [
+								{
+									"name": "Aggregation_Index_Pct",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": 0.99
+								},
+								{
+									"name": "Mean_Cell_Diameter_Micrometer",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": 1.5
+								},
+								{
+									"name": "Coefficient_of_Variation_Pct",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": 0.99
+								}
+							]
+						},
+						{
+							"name": "Quality",
+							"expression": {
+								"type": "Reference",
+								"reference": {
+									"type": "Empty"
+								}
+							},
+							"attributes": [
+								{
+									"name": "Detection_Confidence_Pct",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": 0.99
+								},
+								{
+									"name": "Focus_Quality_Score_Pct",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": 0.99
+								},
+								{
+									"name": "Analysis_Status",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": "Passed"
+								}
+							]
+						}
+					],
+					"parameters": {
+						"type": "EmptyParameters"
+					}
+				},
+				{
+					"name": "Concentrate_TFF_Instance_TFF300",
+					"tags": [],
+					"model": "Concentrate_TFF",
+					"rootValueAs": "Object",
+					"template": {
+						"type": "Off"
+					},
+					"executeMode": "V4",
+					"initExpression": "",
+					"attributes": [
+						{
+							"name": "Time_Ref",
+							"expression": {
+								"type": "Reference",
+								"reference": {
+									"type": "Empty"
+								}
+							},
+							"attributes": [
+								{
+									"name": "Data_Set_ID",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": 123
+								},
+								{
+									"name": "Timestamp_Origin",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": "Timestamp"
+								},
+								{
+									"name": "Seconds_Eclipsed",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": 123
+								}
+							]
+						},
+						{
+							"name": "Main",
+							"expression": {
+								"type": "Reference",
+								"reference": {
+									"type": "Empty"
+								}
+							},
+							"attributes": [
+								{
+									"name": "Batch_ID",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": "BatchID"
+								},
+								{
+									"name": "Recipe",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": "Recipe"
+								},
+								{
+									"name": "Formula",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": "Formula"
+								},
+								{
+									"name": "Phase",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": "Phase"
+								},
+								{
+									"name": "State",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": "Statue"
+								}
+							]
+						},
+						{
+							"name": "Process",
+							"expression": {
+								"type": "Reference",
+								"reference": {
+									"type": "Empty"
+								}
+							},
+							"attributes": [
+								{
+									"name": "Transmembrane_Pressure_PSI",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": 123.4
+								},
+								{
+									"name": "Feed_Flux_LMH",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": 123.4
+								},
+								{
+									"name": "Permeate_Flux_LMH",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": 123.4
+								},
+								{
+									"name": "Feed_Flow_LPM",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": 123.4
+								},
+								{
+									"name": "Permeate_Flow_LPM",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": 123.4
+								},
+								{
+									"name": "UV_Absorbance_AU",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": 123.4
+								},
+								{
+									"name": "Conductivity_mS_cm",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": 123.4
+								},
+								{
+									"name": "Weight_kg",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": 123.4
+								},
+								{
+									"name": "Differential_Pressure_PSI",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": 123.4
+								},
+								{
+									"name": "Pressure_Valve_Pct",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": 123.4
+								},
+								{
+									"name": "Temperature_DegC",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": 123.4
+								}
+							]
+						}
+					],
+					"parameters": {
+						"type": "EmptyParameters"
+					}
+				},
+				{
+					"name": "Ferment_Sub_Instance_SUB250",
+					"tags": [],
+					"model": "Ferment_SUB",
+					"rootValueAs": "Object",
+					"template": {
+						"type": "Off"
+					},
+					"executeMode": "V4",
+					"initExpression": "",
+					"attributes": [
+						{
+							"name": "Time_Ref",
+							"expression": {
+								"type": "Reference",
+								"reference": {
+									"type": "Empty"
+								}
+							},
+							"attributes": [
+								{
+									"name": "Data_Set_ID",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": 123
+								},
+								{
+									"name": "Timestamp_Origin",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": "Timestamp"
+								},
+								{
+									"name": "Seconds_Eclipsed",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": 123
+								}
+							]
+						},
+						{
+							"name": "Main",
+							"expression": {
+								"type": "Reference",
+								"reference": {
+									"type": "Empty"
+								}
+							},
+							"attributes": [
+								{
+									"name": "Batch_ID",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": "BatchID"
+								},
+								{
+									"name": "Recipe",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": "Recipe"
+								},
+								{
+									"name": "Formula",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": "Formula"
+								},
+								{
+									"name": "Phase",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": "Phase"
+								},
+								{
+									"name": "State",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": "State"
+								}
+							]
+						},
+						{
+							"name": "Vessel",
+							"expression": {
+								"type": "Reference",
+								"reference": {
+									"type": "Empty"
+								}
+							},
+							"attributes": [
+								{
+									"name": "Temperature_DegC",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": 123.4
+								},
+								{
+									"name": "Culture_pH",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": 5.1
+								},
+								{
+									"name": "Agitator_Speed_RPM",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": 123.4
+								},
+								{
+									"name": "Pressure_PSI",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": 123.4
+								}
+							]
+						},
+						{
+							"name": "Feed",
+							"expression": {
+								"type": "Reference",
+								"reference": {
+									"type": "Empty"
+								}
+							},
+							"attributes": [
+								{
+									"name": "Nutrient1_Flow_ml_Min",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": 123.4
+								},
+								{
+									"name": "Nutrient1_Status",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": "Nutriest1Status"
+								},
+								{
+									"name": "Nutrient2_Flow_ml_Min",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": 1234.5
+								},
+								{
+									"name": "Nutrient2_Status",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": "Nutrient2Status"
+								},
+								{
+									"name": "Media_Flow_L_Hr",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": 123.4
+								},
+								{
+									"name": "Media_Status",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": "MediaStatus"
+								}
+							]
+						},
+						{
+							"name": "Mass_Balance",
+							"expression": {
+								"type": "Reference",
+								"reference": {
+									"type": "Empty"
+								}
+							},
+							"attributes": [
+								{
+									"name": "Weight_kg",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": 123.4
+								},
+								{
+									"name": "Air_Flow_SLPM",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": 123.4
+								},
+								{
+									"name": "PureO_Flow_SLPM",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": 123.4
+								},
+								{
+									"name": "CO2_Flow_SLPM",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": 123.4
+								},
+								{
+									"name": "Air_Valve_Pct",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": 123.4
+								},
+								{
+									"name": "PureO_Valve_Pct",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": 123.4
+								},
+								{
+									"name": "CO2_Valve_Pct",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": 123.4
+								}
+							]
+						}
+					],
+					"parameters": {
+						"type": "EmptyParameters"
+					}
+				},
+				{
+					"name": "MediaPrep_SUM_Instance_SUM500",
+					"tags": [],
+					"model": "MediaPrep_SUM",
+					"rootValueAs": "Object",
+					"template": {
+						"type": "Off"
+					},
+					"executeMode": "V4",
+					"initExpression": "",
+					"attributes": [
+						{
+							"name": "Time_Ref",
+							"expression": {
+								"type": "Reference",
+								"reference": {
+									"type": "Empty"
+								}
+							},
+							"attributes": [
+								{
+									"name": "Data_Set_ID",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": 123
+								},
+								{
+									"name": "Timestamp_Origin",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": "DateTime"
+								},
+								{
+									"name": "Seconds_Eclipsed",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": 123
+								}
+							]
+						},
+						{
+							"name": "Main",
+							"expression": {
+								"type": "Reference",
+								"reference": {
+									"type": "Empty"
+								}
+							},
+							"attributes": [
+								{
+									"name": "Batch_ID",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": "BatchID"
+								},
+								{
+									"name": "Recipe",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": "Recipe"
+								},
+								{
+									"name": "Formula",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": "Formula"
+								},
+								{
+									"name": "Phase",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": "Phase"
+								},
+								{
+									"name": "State",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": "State"
+								}
+							]
+						},
+						{
+							"name": "Process",
+							"expression": {
+								"type": "Reference",
+								"reference": {
+									"type": "Empty"
+								}
+							},
+							"attributes": [
+								{
+									"name": "Culture_pH",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": 123.4
+								},
+								{
+									"name": "Weight_kg",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": 123.4
+								},
+								{
+									"name": "Temperature_DegC",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": 123.4
+								},
+								{
+									"name": "Agitator_Speed_RPM",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": 123.4
+								},
+								{
+									"name": "Dosing_Flow_L_Min",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": 123.4
+								}
+							]
+						}
+					],
+					"parameters": {
+						"type": "EmptyParameters"
+					}
+				},
+				{
+					"name": "Purify_CHR_Instance_CHROM1",
+					"tags": [],
+					"model": "Purify_CHR",
+					"rootValueAs": "Object",
+					"template": {
+						"type": "Off"
+					},
+					"executeMode": "V4",
+					"initExpression": "",
+					"attributes": [
+						{
+							"name": "Time_Ref",
+							"expression": {
+								"type": "Reference",
+								"reference": {
+									"type": "Empty"
+								}
+							},
+							"attributes": [
+								{
+									"name": "Data_Set_ID",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": 123
+								},
+								{
+									"name": "Timestamp_Origin",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": "Timestamp"
+								},
+								{
+									"name": "Seconds_Eclipsed",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": 123
+								}
+							]
+						},
+						{
+							"name": "Main",
+							"expression": {
+								"type": "Reference",
+								"reference": {
+									"type": "Empty"
+								}
+							},
+							"attributes": [
+								{
+									"name": "Batch_ID",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": "BatchID"
+								},
+								{
+									"name": "Recipe",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": "Recipe"
+								},
+								{
+									"name": "Formula",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": "Formula"
+								},
+								{
+									"name": "Phase",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": "Phase"
+								},
+								{
+									"name": "State",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": "State"
+								}
+							]
+						},
+						{
+							"name": "Process",
+							"expression": {
+								"type": "Reference",
+								"reference": {
+									"type": "Empty"
+								}
+							},
+							"attributes": [
+								{
+									"name": "UV_Absorbance_AU",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": 123.4
+								},
+								{
+									"name": "Conductivity_mS_cm",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": 123.4
+								},
+								{
+									"name": "Culture_pH",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": 123.4
+								},
+								{
+									"name": "Column_Pressure_bar",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": 123.4
+								},
+								{
+									"name": "System_Pressure_bar",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": 123.4
+								},
+								{
+									"name": "Flow_Rate_L_hr",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": 123.4
+								},
+								{
+									"name": "Product_Collection_Status",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": true
+								},
+								{
+									"name": "Waste_Diversion_Status",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": false
+								},
+								{
+									"name": "System_Temperature_DegC",
+									"expression": {
+										"type": "Reference",
+										"reference": {
+											"type": "Empty"
+										}
+									},
+									"defaultValue": 123.4
+								}
+							]
+						}
+					],
+					"parameters": {
+						"type": "EmptyParameters"
+					}
+				}
+			]
+		},
+		"conditions": [],
+		"functions": [],
+		"tags": [],
+		"pipelines": [],
+		"namespace": [
+			{
+				"type": "local",
+				"id": "2738cc3a-de3c-4cb4-b83e-39f86567e7e5",
+				"name": "Manufacturing",
+				"reference": {
+					"type": "Empty"
+				}
+			},
+			{
+				"type": "local",
+				"id": "004d5ffe-3840-4215-bb5b-6ea4ec1ee0e8",
+				"name": "P01_MediaPrep",
+				"parentNamespaceId": "2738cc3a-de3c-4cb4-b83e-39f86567e7e5",
+				"reference": {
+					"type": "Empty"
+				}
+			},
+			{
+				"type": "local",
+				"id": "47be4e6c-5b08-4fca-8e7c-51482366e5a6",
+				"name": "SUM500",
+				"parentNamespaceId": "004d5ffe-3840-4215-bb5b-6ea4ec1ee0e8",
+				"reference": {
+					"type": "Empty"
+				}
+			},
+			{
+				"type": "local",
+				"id": "aa8d5fe0-4fa6-4d6d-a3ef-06e98806c065",
+				"name": "Asset",
+				"parentNamespaceId": "47be4e6c-5b08-4fca-8e7c-51482366e5a6",
+				"reference": {
+					"type": "Instance",
+					"name": "MediaPrep_SUM_Instance_SUM500",
+					"path": "",
+					"params": {}
+				}
+			},
+			{
+				"type": "local",
+				"id": "cbc92048-febe-4836-adea-4d4f51210eed",
+				"name": "P02_Ferment",
+				"parentNamespaceId": "2738cc3a-de3c-4cb4-b83e-39f86567e7e5",
+				"reference": {
+					"type": "Empty"
+				}
+			},
+			{
+				"type": "local",
+				"id": "ddf6d690-a375-4c63-ab12-4b36a0a8bda8",
+				"name": "SUB250",
+				"parentNamespaceId": "cbc92048-febe-4836-adea-4d4f51210eed",
+				"reference": {
+					"type": "Empty"
+				}
+			},
+			{
+				"type": "local",
+				"id": "22d7be5d-44ee-413d-8397-efb2d8ef980f",
+				"name": "Asset",
+				"parentNamespaceId": "ddf6d690-a375-4c63-ab12-4b36a0a8bda8",
+				"reference": {
+					"type": "Instance",
+					"name": "Ferment_Sub_Instance_SUB250",
+					"path": "",
+					"params": {}
+				}
+			},
+			{
+				"type": "local",
+				"id": "726fc319-cb45-44c4-9ed3-fe3ebb4239f4",
+				"name": "Cell_Count",
+				"parentNamespaceId": "ddf6d690-a375-4c63-ab12-4b36a0a8bda8",
+				"reference": {
+					"type": "Instance",
+					"name": "Cell_Count_Instance_Lab",
+					"path": "",
+					"params": {}
+				}
+			},
+			{
+				"type": "local",
+				"id": "ce2790f1-c5bb-4bf2-8997-3987f2fbb246",
+				"name": "P03_Purify",
+				"parentNamespaceId": "2738cc3a-de3c-4cb4-b83e-39f86567e7e5",
+				"reference": {
+					"type": "Empty"
+				}
+			},
+			{
+				"type": "local",
+				"id": "d37db8a7-8b96-4f48-bbd9-f1176c6d6451",
+				"name": "CHR01",
+				"parentNamespaceId": "ce2790f1-c5bb-4bf2-8997-3987f2fbb246",
+				"reference": {
+					"type": "Empty"
+				}
+			},
+			{
+				"type": "local",
+				"id": "7f019c95-c32e-43bb-a891-a54fb98a1aac",
+				"name": "Asset",
+				"parentNamespaceId": "d37db8a7-8b96-4f48-bbd9-f1176c6d6451",
+				"reference": {
+					"type": "Instance",
+					"name": "Purify_CHR_Instance_CHROM1",
+					"path": "",
+					"params": {}
+				}
+			},
+			{
+				"type": "local",
+				"id": "f22133fd-b19b-4511-ba73-0281cb01e0ff",
+				"name": "P04_Concentrate",
+				"parentNamespaceId": "2738cc3a-de3c-4cb4-b83e-39f86567e7e5",
+				"reference": {
+					"type": "Empty"
+				}
+			},
+			{
+				"type": "local",
+				"id": "5b64733c-e6fc-4613-8fb4-a508c6ba5df0",
+				"name": "TFF300",
+				"parentNamespaceId": "f22133fd-b19b-4511-ba73-0281cb01e0ff",
+				"reference": {
+					"type": "Empty"
+				}
+			},
+			{
+				"type": "local",
+				"id": "5e5a08f4-55b2-47d0-a63f-80c993356ca3",
+				"name": "Asset",
+				"parentNamespaceId": "5b64733c-e6fc-4613-8fb4-a508c6ba5df0",
+				"reference": {
+					"type": "Instance",
+					"name": "Concentrate_TFF_Instance_TFF300",
+					"path": "",
+					"params": {}
+				}
+			}
+		]
+	},
+	"network": {
+		"groups": [],
+		"hubs": []
+	}
+}
