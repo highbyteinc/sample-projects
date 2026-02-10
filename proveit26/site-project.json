@@ -1802,7 +1802,139 @@
 			}
 		],
 		"pipelines": [],
-		"namespace": []
+		"namespace": [
+			{
+				"type": "local",
+				"id": "aab5dc83-1aee-49da-8027-701a425d56c2",
+				"name": "Manufacturing",
+				"reference": {
+					"type": "Empty"
+				}
+			},
+			{
+				"type": "local",
+				"id": "deef4c92-33fc-448c-babf-a1a4ef1c73bc",
+				"name": "P02_Fermentation",
+				"parentNamespaceId": "aab5dc83-1aee-49da-8027-701a425d56c2",
+				"reference": {
+					"type": "Empty"
+				}
+			},
+			{
+				"type": "local",
+				"id": "e9a95b05-2fb1-4a3b-983a-975b0c2071fe",
+				"name": "SUB250",
+				"parentNamespaceId": "deef4c92-33fc-448c-babf-a1a4ef1c73bc",
+				"reference": {
+					"type": "Empty"
+				}
+			},
+			{
+				"type": "local",
+				"id": "e3d07c0a-56a7-4888-a0b2-4554bc911352",
+				"name": "Asset",
+				"parentNamespaceId": "e9a95b05-2fb1-4a3b-983a-975b0c2071fe",
+				"reference": {
+					"type": "Instance",
+					"name": "SUB",
+					"path": "",
+					"params": {}
+				}
+			},
+			{
+				"type": "local",
+				"id": "4f98cd87-3aae-496b-bbdf-a43628f744a7",
+				"name": "CellCount",
+				"parentNamespaceId": "e9a95b05-2fb1-4a3b-983a-975b0c2071fe",
+				"reference": {
+					"type": "Instance",
+					"name": "CellCount",
+					"path": "",
+					"params": {}
+				}
+			},
+			{
+				"type": "local",
+				"id": "92915cf1-d7b7-46a6-87bf-f87f20106d1c",
+				"name": "P01_MediaPrep",
+				"parentNamespaceId": "aab5dc83-1aee-49da-8027-701a425d56c2",
+				"reference": {
+					"type": "Empty"
+				}
+			},
+			{
+				"type": "local",
+				"id": "3cc3f5dc-969c-4e89-bb2a-6a652dad2619",
+				"name": "SUM500",
+				"parentNamespaceId": "92915cf1-d7b7-46a6-87bf-f87f20106d1c",
+				"reference": {
+					"type": "Empty"
+				}
+			},
+			{
+				"type": "local",
+				"id": "aef784e3-0e6b-425c-b8bf-d64360a9264b",
+				"name": "Asset",
+				"parentNamespaceId": "3cc3f5dc-969c-4e89-bb2a-6a652dad2619",
+				"reference": {
+					"type": "Instance",
+					"name": "SUM",
+					"path": "",
+					"params": {}
+				}
+			},
+			{
+				"type": "local",
+				"id": "338b13b6-9788-4665-b98b-3d3f28d1c250",
+				"name": "P01_Purify",
+				"parentNamespaceId": "aab5dc83-1aee-49da-8027-701a425d56c2",
+				"reference": {
+					"type": "Empty"
+				}
+			},
+			{
+				"type": "local",
+				"id": "faecee57-bb3a-46c9-8e1e-04f78366a8d8",
+				"name": "CHR01",
+				"parentNamespaceId": "338b13b6-9788-4665-b98b-3d3f28d1c250",
+				"reference": {
+					"type": "Empty"
+				}
+			},
+			{
+				"type": "local",
+				"id": "6e947eba-6e0e-4bb5-95da-a627744dd3d9",
+				"name": "Asset",
+				"parentNamespaceId": "faecee57-bb3a-46c9-8e1e-04f78366a8d8",
+				"reference": {
+					"type": "Instance",
+					"name": "CHR",
+					"path": "",
+					"params": {}
+				}
+			},
+			{
+				"type": "local",
+				"id": "63ea4b97-0960-4e90-9dd7-5b4a05b52ff3",
+				"name": "TFF300",
+				"parentNamespaceId": "338b13b6-9788-4665-b98b-3d3f28d1c250",
+				"reference": {
+					"type": "Empty"
+				}
+			},
+			{
+				"type": "local",
+				"id": "843e9971-6e31-4e3b-891f-17532bfd91dc",
+				"name": "Asset",
+				"parentNamespaceId": "63ea4b97-0960-4e90-9dd7-5b4a05b52ff3",
+				"reference": {
+					"type": "Instance",
+					"name": "TFF",
+					"path": "",
+					"params": {}
+				}
+			}
+		]
 	},
 	"network": {
 		"groups": [],
