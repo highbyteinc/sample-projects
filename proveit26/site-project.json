@@ -6,15 +6,7 @@
     "build" : "2026.2.5.212",
     "stage" : "Alpha"
   },
-{
-	"productInfo": {
-		"company": "HighByte",
-		"product": "IntelligenceHub",
-		"version": "4.4.0",
-		"build": "2026.2.9.224",
-		"stage": "Alpha"
-	},
-	"project": {
+"project": {
 		"version": 13,
 		"connections": [],
 		"inputs": [],
