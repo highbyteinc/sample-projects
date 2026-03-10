@@ -1821,7 +1821,136 @@
 		"conditions": [],
 		"functions": [],
 		"tags": [],
-		"pipelines": [],
+	"pipelines": [
+			{
+				"name": "i3XHistoryRead",
+				"groupAs": "/i3X",
+				"tags": [],
+				"inputStages": [
+					"JavaScript"
+				],
+				"stages": [
+					{
+						"name": "JavaScript",
+						"display": {
+							"position": {
+								"x": 240,
+								"y": 0
+							}
+						},
+						"description": "",
+						"config": {
+							"type": ".JavaScriptTransformConfig",
+							"transformExpression": "stage.setValue(event.value);"
+						},
+						"outputs": [
+							"Return"
+						]
+					},
+					{
+						"name": "Return",
+						"display": {
+							"position": {
+								"x": 690,
+								"y": 0
+							}
+						},
+						"description": "",
+						"config": {
+							"type": ".ReturnConfig"
+						},
+						"outputs": []
+					}
+				],
+				"trackActivity": false,
+				"triggers": [
+					{
+						"name": "APITrigger",
+						"display": {
+							"position": {
+								"x": -375,
+								"y": 0
+							}
+						},
+						"description": "",
+						"config": {
+							"type": ".TriggerApi",
+							"enabled": true,
+							"parameters": {
+								"type": "EmptyParameters"
+							}
+						}
+					}
+				],
+				"errorHandler": {
+					"type": "default"
+				}
+			},
+			{
+				"name": "i3XWrite",
+				"groupAs": "/i3X",
+				"tags": [],
+				"inputStages": [
+					"JavaScript"
+				],
+				"stages": [
+					{
+						"name": "JavaScript",
+						"display": {
+							"position": {
+								"x": 240,
+								"y": 0
+							}
+						},
+						"description": "",
+						"config": {
+							"type": ".JavaScriptTransformConfig",
+							"transformExpression": "stage.setValue(event.value);"
+						},
+						"outputs": [
+							"Return"
+						]
+					},
+					{
+						"name": "Return",
+						"display": {
+							"position": {
+								"x": 690,
+								"y": 0
+							}
+						},
+						"description": "",
+						"config": {
+							"type": ".ReturnConfig"
+						},
+						"outputs": []
+					}
+				],
+				"trackActivity": false,
+				"triggers": [
+					{
+						"name": "APITrigger",
+						"display": {
+							"position": {
+								"x": -375,
+								"y": 0
+							}
+						},
+						"description": "",
+						"config": {
+							"type": ".TriggerApi",
+							"enabled": true,
+							"parameters": {
+								"type": "EmptyParameters"
+							}
+						}
+					}
+				],
+				"errorHandler": {
+					"type": "default"
+				}
+			}
+		],
 		"namespace": [
 			{
 				"type": "local",
