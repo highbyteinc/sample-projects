@@ -8,8 +8,119 @@
   },
 "project": {
 		"version": 13,
-		"connections": [],
-		"inputs": [],
+	"connections": [
+			{
+				"name": "osiSoft",
+				"uri": "osisoft.afsdk://44.237.170.95:45290",
+				"tags": [],
+				"writes": {
+					"flattenModeledValues": false
+				},
+				"writeThrottle": {
+					"enabled": false,
+					"maxBatchSizePerTarget": 1000,
+					"batchDelay": {
+						"duration": 20,
+						"units": "Milliseconds"
+					}
+				},
+				"subscriptions": {},
+				"storeForward": {
+					"enabled": false,
+					"maxEntries": 100,
+					"waitOnFailureInterval": {
+						"duration": 1,
+						"units": "Seconds"
+					}
+				},
+				"settings": {
+					"connectTimeoutSeconds": 5,
+					"requestTimeoutMS": 30000,
+					"compression": "NONE",
+					"auth": {
+						"type": "windows",
+						"username": "",
+						"password": {
+							"type": "Encrypted",
+							"value": {
+								"keyId": "80LHhTtbCAAs4Nrb7irYVw==",
+								"iv": "ztp1rrgM+VBzSAc3geYgqg==",
+								"ciphertext": "BUvlkCdfFlqJnsP8rvOatA=="
+							}
+						}
+					},
+					"password": {
+						"type": "Encrypted",
+						"value": {
+							"keyId": "80LHhTtbCAAs4Nrb7irYVw==",
+							"iv": "EdcUIJPY9nnm3qJTSUovBA==",
+							"ciphertext": "dq9kFzwIMei+87JWCSbTbg=="
+						}
+					}
+				}
+			}
+		],
+		"inputs": [
+			{
+				"name": "historyRead",
+				"connection": "osiSoft",
+				"type": "osisoft.afsdk",
+				"qualifier": {
+					"type": "asset",
+					"options": {
+						"database": "ProveIt26",
+						"query": "{{this.query}}",
+						"get": "rawValues",
+						"index": false,
+						"includeMetaData": true,
+						"includeChildren": true,
+						"indexWindow": "",
+						"endTime": "{{this.endTime}}",
+						"interval": "5m",
+						"startTime": "{{this.startTime}}"
+					}
+				},
+				"cacheLifetime": {
+					"enabled": false
+				},
+				"template": {
+					"type": "Off"
+				},
+				"parameters": {
+					"type": "inline",
+					"model": {
+						"name": "params",
+						"tags": [],
+						"attributes": [
+							{
+								"attributeType": "Internal",
+								"name": "query",
+								"nullable": false,
+								"required": false,
+								"array": false,
+								"internalType": "String"
+							},
+							{
+								"attributeType": "Internal",
+								"name": "startTime",
+								"nullable": false,
+								"required": false,
+								"array": false,
+								"internalType": "String"
+							},
+							{
+								"attributeType": "Internal",
+								"name": "endTime",
+								"nullable": false,
+								"required": false,
+								"array": false,
+								"internalType": "String"
+							}
+						]
+					}
+				}
+			}
+		],
 		"outputs": [],
 		"modeling": {
 			"models": [
@@ -1827,11 +1938,56 @@
 				"groupAs": "/i3X",
 				"tags": [],
 				"inputStages": [
-					"JavaScript"
+					"buildPiQuery"
 				],
 				"stages": [
 					{
-						"name": "JavaScript",
+						"name": "readPi",
+						"display": {
+							"position": {
+								"x": 690,
+								"y": 0
+							}
+						},
+						"description": "",
+						"config": {
+							"type": ".ReadConfig",
+							"failureOutputs": [],
+							"reference": {
+								"type": "Input",
+								"name": "historyRead",
+								"path": "",
+								"params": {
+									"query": "{{event.value.query}}",
+									"startTime": "{{event.value.startTime}}",
+									"endTime": "{{event.value.endTime}}"
+								},
+								"connectionName": "osiSoft"
+							}
+						},
+						"outputs": [
+							"toi3XPayload"
+						]
+					},
+					{
+						"name": "toi3XPayload",
+						"display": {
+							"position": {
+								"x": 1140,
+								"y": 0
+							}
+						},
+						"description": "",
+						"config": {
+							"type": ".JavaScriptTransformConfig",
+							"transformExpression": "// Filter out rows with no data\r\nconst filtered = event.value.filter(row => hasData(row));\r\n\r\nstage.setValue(transform(filtered));\r\n\r\n// Helper to transform PI result to i3X\r\nfunction transform(input) {\r\n  const elementId = event.metadata.elementId;\r\n\r\n  const data = input\r\n    .map(item => {\r\n      const value = stripInternal(item);\r\n\r\n      return {\r\n        value,\r\n        quality: \"GOOD\",\r\n        timestamp: item._timestamp\r\n      };\r\n    })\r\n\r\n    return {\r\n      [elementId]: {\r\n        data\r\n      }\r\n    };\r\n}\r\n\r\n// Recursively remove keys that start with \"_\"\r\nfunction stripInternal(obj) {\r\n  if (obj === null || typeof obj !== \"object\") {\r\n    return obj;\r\n  }\r\n\r\n  if (Array.isArray(obj)) {\r\n    return obj.map(stripInternal);\r\n  }\r\n\r\n  const result = {};\r\n  for (const [key, val] of Object.entries(obj)) {\r\n    if (!key.startsWith(\"_\")) {\r\n      result[key] = stripInternal(val);\r\n    }\r\n  }\r\n  return result;\r\n}\r\n\r\nfunction hasData(obj) {\r\n    // Iterate over keys in the object\r\n    return Object.keys(obj).some(key => {\r\n        // Ignore internal metadata keys\r\n        if (key.startsWith('_')) return false;\r\n\r\n        const value = obj[key];\r\n\r\n        // If value is an object, check recursively\r\n        if (value && typeof value === 'object') {\r\n            return hasData(value);\r\n        }\r\n\r\n        // If value is primitive and exists, it's real data\r\n        return value !== null && value !== undefined;\r\n    });\r\n}"
+						},
+						"outputs": [
+							"Return"
+						]
+					},
+					{
+						"name": "buildPiQuery",
 						"display": {
 							"position": {
 								"x": 240,
@@ -1841,17 +1997,17 @@
 						"description": "",
 						"config": {
 							"type": ".JavaScriptTransformConfig",
-							"transformExpression": "stage.setValue(event.value);"
+							"transformExpression": "// Read a single elementId\r\nlet elementId = event.value.elementIds[0];\r\n\r\n// Split on dots\r\nconst parts = elementId.split(\".\");\r\n\r\n// Stop tokens\r\nconst STOP_TOKENS = [\"Asset\", \"Cell_Count\"];\r\n\r\n// Find first stop token (if any)\r\nlet stopIndex = parts.findIndex(p => STOP_TOKENS.includes(p));\r\n\r\nlet name;\r\nlet parentParts;\r\n\r\nif (stopIndex !== -1) {\r\n    name = parts[stopIndex];\r\n    parentParts = parts.slice(0, stopIndex);\r\n} else {\r\n    name = parts.pop();\r\n    parentParts = parts;\r\n}\r\n\r\n// Normalize\r\nname = name.replace(/\\s+/g, \"\");\r\n\r\n// IMPORTANT: single backslash in output\r\nconst parent = parentParts.join(\"\\\\\");\r\n\r\n// Build PI query\r\nconst queryValue = `Name: '${name}' Parent: '${parent}'`;\r\n\r\n// Repackage\r\nlet outEvent = {\r\n    ...event.value,\r\n    query: queryValue\r\n};\r\n\r\n// Save elementId for later\r\nstage.setMetadata(\"elementId\", elementId);\r\nstage.setValue(outEvent);\r\n"
 						},
 						"outputs": [
-							"Return"
+							"readPi"
 						]
 					},
 					{
 						"name": "Return",
 						"display": {
 							"position": {
-								"x": 690,
+								"x": 1590,
 								"y": 0
 							}
 						},
@@ -1862,13 +2018,13 @@
 						"outputs": []
 					}
 				],
-				"trackActivity": false,
+				"trackActivity": true,
 				"triggers": [
 					{
 						"name": "APITrigger",
 						"display": {
 							"position": {
-								"x": -375,
+								"x": -450,
 								"y": 0
 							}
 						},
@@ -1943,6 +2099,117 @@
 							"parameters": {
 								"type": "EmptyParameters"
 							}
+						}
+					}
+				],
+				"errorHandler": {
+					"type": "default"
+				}
+			},
+			{
+				"name": "namespaceToPI",
+				"groupAs": "/historical",
+				"tags": [],
+				"inputStages": [
+					"SmartQuery"
+				],
+				"stages": [
+					{
+						"name": "buildPath",
+						"display": {
+							"position": {
+								"x": 795,
+								"y": 0
+							}
+						},
+						"description": "",
+						"config": {
+							"type": ".JavaScriptTransformConfig",
+							"transformExpression": "let pathInfo = parsePath(event.metadata.query._path)\r\nstage.setAllMetadata(pathInfo)\r\n\r\nstage.setValue(event.value);\r\n\r\nfunction parsePath(input) {\r\n  const parts = input.split('\\\\');\r\n  const name = parts.pop();          // last segment\r\n  const path = parts.join('\\\\');      // everything before it\r\n  return { name, path };\r\n}"
+						},
+						"outputs": [
+							"toPI"
+						]
+					},
+					{
+						"name": "SmartQuery",
+						"display": {
+							"position": {
+								"x": 346,
+								"y": -1
+							}
+						},
+						"description": "",
+						"config": {
+							"type": ".SmartQueryConfig",
+							"query": {
+								"from": [
+									"Manufacturing.**"
+								],
+								"where": "",
+								"select": {
+									"what": [
+										"value"
+									],
+									"as": "List",
+									"delim": "\\"
+								}
+							},
+							"breakup": true
+						},
+						"outputs": [
+							"buildPath"
+						]
+					},
+					{
+						"name": "toPI",
+						"display": {
+							"position": {
+								"x": 1245,
+								"y": 0
+							}
+						},
+						"description": "",
+						"config": {
+							"type": ".DynamicWriteConfig",
+							"failureOutputs": [],
+							"connectionReference": "{{Connection.osiSoft}}",
+							"qualifier": {
+								"type": "asset",
+								"options": {
+									"create": true,
+									"updateOption": "Insert",
+									"database": "ProveIt26",
+									"path": "{{event.metadata.path}}",
+									"name": "{{event.metadata.name}}"
+								},
+								"breakupArrays": false
+							},
+							"qualifierExpression": "",
+							"writeReturn": "completion"
+						},
+						"outputs": []
+					}
+				],
+				"trackActivity": true,
+				"triggers": [
+					{
+						"name": "PolledTrigger",
+						"display": {
+							"position": {
+								"x": -422,
+								"y": -7
+							}
+						},
+						"description": "",
+						"config": {
+							"type": ".TriggerPolled",
+							"enabled": true,
+							"interval": {
+								"duration": 5,
+								"units": "Seconds"
+							},
+							"mode": "interval"
 						}
 					}
 				],
