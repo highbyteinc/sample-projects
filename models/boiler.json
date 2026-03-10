@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Boiler",
+  "type": "object",
+  "required": [
+    "id",
+    "name",
+    "status",
+    "steamPressure",
+    "steamTemperature",
+    "waterLevel"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique boiler identifier"
+    },
+    "name": {
+      "type": "string",
+      "description": "Boiler name"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["running", "stopped", "standby", "fault"]
+    },
+
+    "steamPressure": {
+      "type": "number",
+      "description": "Steam pressure in psi"
+    },
+    "steamTemperature": {
+      "type": "number",
+      "description": "Steam temperature in °F"
+    },
+    "waterLevel": {
+      "type": "number",
+      "description": "Water level percentage (0-100)"
+    },
+    "feedwaterFlow": {
+      "type": "number",
+      "description": "Feedwater flow rate"
+    },
+    "fuelFlow": {
+      "type": "number",
+      "description": "Fuel flow rate"
+    },
+    "burnerOn": {
+      "type": "boolean",
+      "description": "Whether burner is active"
+    },
+
+    "alarmActive": {
+      "type": "boolean"
+    },
+    "alarmMessage": {
+      "type": "string"
+    },
+
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}
