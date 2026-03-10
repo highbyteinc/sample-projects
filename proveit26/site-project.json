@@ -899,1132 +899,924 @@
 					]
 				}
 			],
-			"instances": [
-				{
-					"name": "Cell_Count_Instance_Lab",
-					"tags": [],
-					"model": "Cell_Count",
-					"rootValueAs": "Object",
-					"template": {
-						"type": "Off"
-					},
-					"executeMode": "V4",
-					"initExpression": "",
-					"attributes": [
-						{
-							"name": "Sample",
-							"expression": {
-								"type": "Reference",
-								"reference": {
-									"type": "Empty"
-								}
-							},
-							"attributes": [
-								{
-									"name": "Sample_ID",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": "SampleID"
-								},
-								{
-									"name": "Batch_ID",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": "BatchID"
-								},
-								{
-									"name": "Analysis_DateTime",
-									"expression": {
-										"type": "JavaScript",
-										"expression": "return (Date.now());"
-									}
-								}
-							]
-						},
-						{
-							"name": "Process",
-							"expression": {
-								"type": "Reference",
-								"reference": {
-									"type": "Empty"
-								}
-							},
-							"attributes": [
-								{
-									"name": "Viable_Concentration_mL",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": 123.4
-								},
-								{
-									"name": "Viability_Pct",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": 0.99
-								},
-								{
-									"name": "Total_Concentration_mL",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": 123.4
-								}
-							]
-						},
-						{
-							"name": "Culture_Health",
-							"expression": {
-								"type": "Reference",
-								"reference": {
-									"type": "Empty"
-								}
-							},
-							"attributes": [
-								{
-									"name": "Aggregation_Index_Pct",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": 0.99
-								},
-								{
-									"name": "Mean_Cell_Diameter_Micrometer",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": 1.5
-								},
-								{
-									"name": "Coefficient_of_Variation_Pct",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": 0.99
-								}
-							]
-						},
-						{
-							"name": "Quality",
-							"expression": {
-								"type": "Reference",
-								"reference": {
-									"type": "Empty"
-								}
-							},
-							"attributes": [
-								{
-									"name": "Detection_Confidence_Pct",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": 0.99
-								},
-								{
-									"name": "Focus_Quality_Score_Pct",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": 0.99
-								},
-								{
-									"name": "Analysis_Status",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": "Passed"
-								}
-							]
-						}
-					],
-					"parameters": {
-						"type": "EmptyParameters"
-					}
-				},
-				{
-					"name": "Concentrate_TFF_Instance_TFF300",
-					"tags": [],
-					"model": "Concentrate_TFF",
-					"rootValueAs": "Object",
-					"template": {
-						"type": "Off"
-					},
-					"executeMode": "V4",
-					"initExpression": "",
-					"attributes": [
-						{
-							"name": "Time_Ref",
-							"expression": {
-								"type": "Reference",
-								"reference": {
-									"type": "Empty"
-								}
-							},
-							"attributes": [
-								{
-									"name": "Data_Set_ID",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": 123
-								},
-								{
-									"name": "Timestamp_Origin",
-									"expression": {
-										"type": "JavaScript",
-										"expression": "return (Date.now());"
-									}
-								},
-								{
-									"name": "Seconds_Eclipsed",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": 123
-								}
-							]
-						},
-						{
-							"name": "Main",
-							"expression": {
-								"type": "Reference",
-								"reference": {
-									"type": "Empty"
-								}
-							},
-							"attributes": [
-								{
-									"name": "Batch_ID",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": "BatchID"
-								},
-								{
-									"name": "Recipe",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": "Recipe"
-								},
-								{
-									"name": "Formula",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": "Formula"
-								},
-								{
-									"name": "Phase",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": "Phase"
-								},
-								{
-									"name": "State",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": "Statue"
-								}
-							]
-						},
-						{
-							"name": "Process",
-							"expression": {
-								"type": "Reference",
-								"reference": {
-									"type": "Empty"
-								}
-							},
-							"attributes": [
-								{
-									"name": "Transmembrane_Pressure_PSI",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": 123.4
-								},
-								{
-									"name": "Feed_Flux_LMH",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": 123.4
-								},
-								{
-									"name": "Permeate_Flux_LMH",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": 123.4
-								},
-								{
-									"name": "Feed_Flow_LPM",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": 123.4
-								},
-								{
-									"name": "Permeate_Flow_LPM",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": 123.4
-								},
-								{
-									"name": "UV_Absorbance_AU",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": 123.4
-								},
-								{
-									"name": "Conductivity_mS_cm",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": 123.4
-								},
-								{
-									"name": "Weight_kg",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": 123.4
-								},
-								{
-									"name": "Differential_Pressure_PSI",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": 123.4
-								},
-								{
-									"name": "Pressure_Valve_Pct",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": 123.4
-								},
-								{
-									"name": "Temperature_DegC",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": 123.4
-								}
-							]
-						}
-					],
-					"parameters": {
-						"type": "EmptyParameters"
-					}
-				},
-				{
-					"name": "Ferment_Sub_Instance_SUB250",
-					"tags": [],
-					"model": "Ferment_SUB",
-					"rootValueAs": "Object",
-					"template": {
-						"type": "Off"
-					},
-					"executeMode": "V4",
-					"initExpression": "",
-					"attributes": [
-						{
-							"name": "Time_Ref",
-							"expression": {
-								"type": "Reference",
-								"reference": {
-									"type": "Empty"
-								}
-							},
-							"attributes": [
-								{
-									"name": "Data_Set_ID",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": 123
-								},
-								{
-									"name": "Timestamp_Origin",
-									"expression": {
-										"type": "JavaScript",
-										"expression": "return (Date.now());"
-									},
-									"defaultValue": "Timestamp"
-								},
-								{
-									"name": "Seconds_Eclipsed",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": 123
-								}
-							]
-						},
-						{
-							"name": "Main",
-							"expression": {
-								"type": "Reference",
-								"reference": {
-									"type": "Empty"
-								}
-							},
-							"attributes": [
-								{
-									"name": "Batch_ID",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": "BatchID"
-								},
-								{
-									"name": "Recipe",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": "Recipe"
-								},
-								{
-									"name": "Formula",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": "Formula"
-								},
-								{
-									"name": "Phase",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": "Phase"
-								},
-								{
-									"name": "State",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": "State"
-								}
-							]
-						},
-						{
-							"name": "Vessel",
-							"expression": {
-								"type": "Reference",
-								"reference": {
-									"type": "Empty"
-								}
-							},
-							"attributes": [
-								{
-									"name": "Temperature_DegC",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": 123.4
-								},
-								{
-									"name": "Culture_pH",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": 5.1
-								},
-								{
-									"name": "Agitator_Speed_RPM",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": 123.4
-								},
-								{
-									"name": "Pressure_PSI",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": 123.4
-								}
-							]
-						},
-						{
-							"name": "Feed",
-							"expression": {
-								"type": "Reference",
-								"reference": {
-									"type": "Empty"
-								}
-							},
-							"attributes": [
-								{
-									"name": "Nutrient1_Flow_ml_Min",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": 123.4
-								},
-								{
-									"name": "Nutrient1_Status",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": "Nutriest1Status"
-								},
-								{
-									"name": "Nutrient2_Flow_ml_Min",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": 1234.5
-								},
-								{
-									"name": "Nutrient2_Status",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": "Nutrient2Status"
-								},
-								{
-									"name": "Media_Flow_L_Hr",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": 123.4
-								},
-								{
-									"name": "Media_Status",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": "MediaStatus"
-								}
-							]
-						},
-						{
-							"name": "Mass_Balance",
-							"expression": {
-								"type": "Reference",
-								"reference": {
-									"type": "Empty"
-								}
-							},
-							"attributes": [
-								{
-									"name": "Weight_kg",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": 123.4
-								},
-								{
-									"name": "Air_Flow_SLPM",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": 123.4
-								},
-								{
-									"name": "PureO_Flow_SLPM",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": 123.4
-								},
-								{
-									"name": "CO2_Flow_SLPM",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": 123.4
-								},
-								{
-									"name": "Air_Valve_Pct",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": 123.4
-								},
-								{
-									"name": "PureO_Valve_Pct",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": 123.4
-								},
-								{
-									"name": "CO2_Valve_Pct",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": 123.4
-								}
-							]
-						}
-					],
-					"parameters": {
-						"type": "EmptyParameters"
-					}
-				},
-				{
-					"name": "MediaPrep_SUM_Instance_SUM500",
-					"tags": [],
-					"model": "MediaPrep_SUM",
-					"rootValueAs": "Object",
-					"template": {
-						"type": "Off"
-					},
-					"executeMode": "V4",
-					"initExpression": "",
-					"attributes": [
-						{
-							"name": "Time_Ref",
-							"expression": {
-								"type": "Reference",
-								"reference": {
-									"type": "Empty"
-								}
-							},
-							"attributes": [
-								{
-									"name": "Data_Set_ID",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": 123
-								},
-								{
-									"name": "Timestamp_Origin",
-									"expression": {
-										"type": "JavaScript",
-										"expression": "return (Date.now());"
-									}
-								},
-								{
-									"name": "Seconds_Eclipsed",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": 123
-								}
-							]
-						},
-						{
-							"name": "Main",
-							"expression": {
-								"type": "Reference",
-								"reference": {
-									"type": "Empty"
-								}
-							},
-							"attributes": [
-								{
-									"name": "Batch_ID",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": "BatchID"
-								},
-								{
-									"name": "Recipe",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": "Recipe"
-								},
-								{
-									"name": "Formula",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": "Formula"
-								},
-								{
-									"name": "Phase",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": "Phase"
-								},
-								{
-									"name": "State",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": "State"
-								}
-							]
-						},
-						{
-							"name": "Process",
-							"expression": {
-								"type": "Reference",
-								"reference": {
-									"type": "Empty"
-								}
-							},
-							"attributes": [
-								{
-									"name": "Culture_pH",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": 123.4
-								},
-								{
-									"name": "Weight_kg",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": 123.4
-								},
-								{
-									"name": "Temperature_DegC",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": 123.4
-								},
-								{
-									"name": "Agitator_Speed_RPM",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": 123.4
-								},
-								{
-									"name": "Dosing_Flow_L_Min",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": 123.4
-								}
-							]
-						}
-					],
-					"parameters": {
-						"type": "EmptyParameters"
-					}
-				},
-				{
-					"name": "Purify_CHR_Instance_CHROM1",
-					"tags": [],
-					"model": "Purify_CHR",
-					"rootValueAs": "Object",
-					"template": {
-						"type": "Off"
-					},
-					"executeMode": "V4",
-					"initExpression": "",
-					"attributes": [
-						{
-							"name": "Time_Ref",
-							"expression": {
-								"type": "Reference",
-								"reference": {
-									"type": "Empty"
-								}
-							},
-							"attributes": [
-								{
-									"name": "Data_Set_ID",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": 123
-								},
-								{
-									"name": "Timestamp_Origin",
-									"expression": {
-										"type": "JavaScript",
-										"expression": "return (Date.now());"
-									}
-								},
-								{
-									"name": "Seconds_Eclipsed",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": 123
-								}
-							]
-						},
-						{
-							"name": "Main",
-							"expression": {
-								"type": "Reference",
-								"reference": {
-									"type": "Empty"
-								}
-							},
-							"attributes": [
-								{
-									"name": "Batch_ID",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": "BatchID"
-								},
-								{
-									"name": "Recipe",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": "Recipe"
-								},
-								{
-									"name": "Formula",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": "Formula"
-								},
-								{
-									"name": "Phase",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": "Phase"
-								},
-								{
-									"name": "State",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": "State"
-								}
-							]
-						},
-						{
-							"name": "Process",
-							"expression": {
-								"type": "Reference",
-								"reference": {
-									"type": "Empty"
-								}
-							},
-							"attributes": [
-								{
-									"name": "UV_Absorbance_AU",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": 123.4
-								},
-								{
-									"name": "Conductivity_mS_cm",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": 123.4
-								},
-								{
-									"name": "Culture_pH",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": 123.4
-								},
-								{
-									"name": "Column_Pressure_bar",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": 123.4
-								},
-								{
-									"name": "System_Pressure_bar",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": 123.4
-								},
-								{
-									"name": "Flow_Rate_L_hr",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": 123.4
-								},
-								{
-									"name": "Product_Collection_Status",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": true
-								},
-								{
-									"name": "Waste_Diversion_Status",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": false
-								},
-								{
-									"name": "System_Temperature_DegC",
-									"expression": {
-										"type": "Reference",
-										"reference": {
-											"type": "Empty"
-										}
-									},
-									"defaultValue": 123.4
-								}
-							]
-						}
-					],
-					"parameters": {
-						"type": "EmptyParameters"
-					}
-				}
-			]
+			            "instances": [{
+                    "name": "Cell_Count_Instance_Lab",
+                    "tags": [],
+                    "model": "Cell_Count",
+                    "rootValueAs": "Object",
+                    "template": {
+                        "type": "Off"
+                    },
+                    "executeMode": "V4",
+                    "initExpression": "",
+                    "attributes": [{
+                            "name": "Sample",
+                            "expression": {
+                                "type": "Reference",
+                                "reference": {
+                                    "type": "Empty"
+                                }
+                            },
+                            "attributes": [{
+                                    "name": "Sample_ID",
+                                    "expression": {
+                                        "type": "Reference",
+                                        "reference": {
+                                            "type": "Empty"
+                                        }
+                                    },
+                                    "defaultValue": "SampleID"
+                                }, {
+                                    "name": "Batch_ID",
+                                    "expression": {
+                                        "type": "Reference",
+                                        "reference": {
+                                            "type": "Empty"
+                                        }
+                                    },
+                                    "defaultValue": "BatchID"
+                                }, {
+                                    "name": "Analysis_DateTime",
+                                    "expression": {
+                                        "type": "JavaScript",
+                                        "expression": "return (Date.now());"
+                                    }
+                                }
+                            ]
+                        }, {
+                            "name": "Process",
+                            "expression": {
+                                "type": "Reference",
+                                "reference": {
+                                    "type": "Empty"
+                                }
+                            },
+                            "attributes": [{
+                                    "name": "Viable_Concentration_mL",
+                                    "expression": {
+                                        "type": "JavaScript",
+                                        "expression": "return Math.random();"
+                                    }
+                                }, {
+                                    "name": "Viability_Pct",
+                                    "expression": {
+                                        "type": "JavaScript",
+                                        "expression": "return Math.random();"
+                                    },
+                                    "defaultValue": 0.99
+                                }, {
+                                    "name": "Total_Concentration_mL",
+                                    "expression": {
+                                        "type": "JavaScript",
+                                        "expression": "return Math.random();"
+                                    },
+                                    "defaultValue": 123.4
+                                }
+                            ]
+                        }, {
+                            "name": "Culture_Health",
+                            "expression": {
+                                "type": "Reference",
+                                "reference": {
+                                    "type": "Empty"
+                                }
+                            },
+                            "attributes": [{
+                                    "name": "Aggregation_Index_Pct",
+                                    "expression": {
+                                        "type": "JavaScript",
+                                        "expression": "return Math.random();"
+                                    },
+                                    "defaultValue": 0.99
+                                }, {
+                                    "name": "Mean_Cell_Diameter_Micrometer",
+                                    "expression": {
+                                        "type": "JavaScript",
+                                        "expression": "return Math.random();"
+                                    },
+                                    "defaultValue": 1.5
+                                }, {
+                                    "name": "Coefficient_of_Variation_Pct",
+                                    "expression": {
+                                        "type": "JavaScript",
+                                        "expression": "return Math.random();"
+                                    },
+                                    "defaultValue": 0.99
+                                }
+                            ]
+                        }, {
+                            "name": "Quality",
+                            "expression": {
+                                "type": "Reference",
+                                "reference": {
+                                    "type": "Empty"
+                                }
+                            },
+                            "attributes": [{
+                                    "name": "Detection_Confidence_Pct",
+                                    "expression": {
+                                        "type": "JavaScript",
+                                        "expression": "return Math.random();"
+                                    },
+                                    "defaultValue": 0.99
+                                }, {
+                                    "name": "Focus_Quality_Score_Pct",
+                                    "expression": {
+                                        "type": "JavaScript",
+                                        "expression": "return Math.random();"
+                                    },
+                                    "defaultValue": 0.99
+                                }, {
+                                    "name": "Analysis_Status",
+                                    "expression": {
+                                        "type": "Reference",
+                                        "reference": {
+                                            "type": "Empty"
+                                        }
+                                    },
+                                    "defaultValue": "Passed"
+                                }
+                            ]
+                        }
+                    ],
+                    "parameters": {
+                        "type": "EmptyParameters"
+                    }
+                }, {
+                    "name": "Concentrate_TFF_Instance_TFF300",
+                    "tags": [],
+                    "model": "Concentrate_TFF",
+                    "rootValueAs": "Object",
+                    "template": {
+                        "type": "Off"
+                    },
+                    "executeMode": "V4",
+                    "initExpression": "",
+                    "attributes": [{
+                            "name": "Time_Ref",
+                            "expression": {
+                                "type": "Reference",
+                                "reference": {
+                                    "type": "Empty"
+                                }
+                            },
+                            "attributes": [{
+                                    "name": "Data_Set_ID",
+                                    "expression": {
+                                        "type": "Reference",
+                                        "reference": {
+                                            "type": "Empty"
+                                        }
+                                    },
+                                    "defaultValue": 123
+                                }, {
+                                    "name": "Timestamp_Origin",
+                                    "expression": {
+                                        "type": "JavaScript",
+                                        "expression": "return (Date.now());"
+                                    }
+                                }, {
+                                    "name": "Seconds_Eclipsed",
+                                    "expression": {
+                                        "type": "Reference",
+                                        "reference": {
+                                            "type": "Empty"
+                                        }
+                                    },
+                                    "defaultValue": 123
+                                }
+                            ]
+                        }, {
+                            "name": "Main",
+                            "expression": {
+                                "type": "Reference",
+                                "reference": {
+                                    "type": "Empty"
+                                }
+                            },
+                            "attributes": [{
+                                    "name": "Batch_ID",
+                                    "expression": {
+                                        "type": "Reference",
+                                        "reference": {
+                                            "type": "Empty"
+                                        }
+                                    },
+                                    "defaultValue": "BatchID"
+                                }, {
+                                    "name": "Recipe",
+                                    "expression": {
+                                        "type": "Reference",
+                                        "reference": {
+                                            "type": "Empty"
+                                        }
+                                    },
+                                    "defaultValue": "Recipe"
+                                }, {
+                                    "name": "Formula",
+                                    "expression": {
+                                        "type": "Reference",
+                                        "reference": {
+                                            "type": "Empty"
+                                        }
+                                    },
+                                    "defaultValue": "Formula"
+                                }, {
+                                    "name": "Phase",
+                                    "expression": {
+                                        "type": "Reference",
+                                        "reference": {
+                                            "type": "Empty"
+                                        }
+                                    },
+                                    "defaultValue": "Phase"
+                                }, {
+                                    "name": "State",
+                                    "expression": {
+                                        "type": "Reference",
+                                        "reference": {
+                                            "type": "Empty"
+                                        }
+                                    },
+                                    "defaultValue": "Statue"
+                                }
+                            ]
+                        }, {
+                            "name": "Process",
+                            "expression": {
+                                "type": "Reference",
+                                "reference": {
+                                    "type": "Empty"
+                                }
+                            },
+                            "attributes": [{
+                                    "name": "Transmembrane_Pressure_PSI",
+                                    "expression": {
+                                        "type": "JavaScript",
+                                        "expression": "return Math.random();"
+                                    },
+                                    "defaultValue": 123.4
+                                }, {
+                                    "name": "Feed_Flux_LMH",
+                                    "expression": {
+                                        "type": "JavaScript",
+                                        "expression": "return Math.random();"
+                                    },
+                                    "defaultValue": 123.4
+                                }, {
+                                    "name": "Permeate_Flux_LMH",
+                                    "expression": {
+                                        "type": "JavaScript",
+                                        "expression": "return Math.random();"
+                                    },
+                                    "defaultValue": 123.4
+                                }, {
+                                    "name": "Feed_Flow_LPM",
+                                    "expression": {
+                                        "type": "JavaScript",
+                                        "expression": "return Math.random();"
+                                    },
+                                    "defaultValue": 123.4
+                                }, {
+                                    "name": "Permeate_Flow_LPM",
+                                    "expression": {
+                                        "type": "JavaScript",
+                                        "expression": "return Math.random();"
+                                    },
+                                    "defaultValue": 123.4
+                                }, {
+                                    "name": "UV_Absorbance_AU",
+                                    "expression": {
+                                        "type": "JavaScript",
+                                        "expression": "return Math.random();"
+                                    },
+                                    "defaultValue": 123.4
+                                }, {
+                                    "name": "Conductivity_mS_cm",
+                                    "expression": {
+                                        "type": "JavaScript",
+                                        "expression": "return Math.random();"
+                                    },
+                                    "defaultValue": 123.4
+                                }, {
+                                    "name": "Weight_kg",
+                                    "expression": {
+                                        "type": "JavaScript",
+                                        "expression": "return Math.random();"
+                                    },
+                                    "defaultValue": 123.4
+                                }, {
+                                    "name": "Differential_Pressure_PSI",
+                                    "expression": {
+                                        "type": "JavaScript",
+                                        "expression": "return Math.random();"
+                                    },
+                                    "defaultValue": 123.4
+                                }, {
+                                    "name": "Pressure_Valve_Pct",
+                                    "expression": {
+                                        "type": "JavaScript",
+                                        "expression": "return Math.random();"
+                                    },
+                                    "defaultValue": 123.4
+                                }, {
+                                    "name": "Temperature_DegC",
+                                    "expression": {
+                                        "type": "JavaScript",
+                                        "expression": "return Math.random();"
+                                    },
+                                    "defaultValue": 123.4
+                                }
+                            ]
+                        }
+                    ],
+                    "parameters": {
+                        "type": "EmptyParameters"
+                    }
+                }, {
+                    "name": "Ferment_Sub_Instance_SUB250",
+                    "tags": [],
+                    "model": "Ferment_SUB",
+                    "rootValueAs": "Object",
+                    "template": {
+                        "type": "Off"
+                    },
+                    "executeMode": "V4",
+                    "initExpression": "",
+                    "attributes": [{
+                            "name": "Time_Ref",
+                            "expression": {
+                                "type": "Reference",
+                                "reference": {
+                                    "type": "Empty"
+                                }
+                            },
+                            "attributes": [{
+                                    "name": "Data_Set_ID",
+                                    "expression": {
+                                        "type": "Reference",
+                                        "reference": {
+                                            "type": "Empty"
+                                        }
+                                    },
+                                    "defaultValue": 123
+                                }, {
+                                    "name": "Timestamp_Origin",
+                                    "expression": {
+                                        "type": "JavaScript",
+                                        "expression": "return (Date.now());"
+                                    },
+                                    "defaultValue": "Timestamp"
+                                }, {
+                                    "name": "Seconds_Eclipsed",
+                                    "expression": {
+                                        "type": "Reference",
+                                        "reference": {
+                                            "type": "Empty"
+                                        }
+                                    },
+                                    "defaultValue": 123
+                                }
+                            ]
+                        }, {
+                            "name": "Main",
+                            "expression": {
+                                "type": "Reference",
+                                "reference": {
+                                    "type": "Empty"
+                                }
+                            },
+                            "attributes": [{
+                                    "name": "Batch_ID",
+                                    "expression": {
+                                        "type": "Reference",
+                                        "reference": {
+                                            "type": "Empty"
+                                        }
+                                    },
+                                    "defaultValue": "BatchID"
+                                }, {
+                                    "name": "Recipe",
+                                    "expression": {
+                                        "type": "Reference",
+                                        "reference": {
+                                            "type": "Empty"
+                                        }
+                                    },
+                                    "defaultValue": "Recipe"
+                                }, {
+                                    "name": "Formula",
+                                    "expression": {
+                                        "type": "Reference",
+                                        "reference": {
+                                            "type": "Empty"
+                                        }
+                                    },
+                                    "defaultValue": "Formula"
+                                }, {
+                                    "name": "Phase",
+                                    "expression": {
+                                        "type": "Reference",
+                                        "reference": {
+                                            "type": "Empty"
+                                        }
+                                    },
+                                    "defaultValue": "Phase"
+                                }, {
+                                    "name": "State",
+                                    "expression": {
+                                        "type": "Reference",
+                                        "reference": {
+                                            "type": "Empty"
+                                        }
+                                    },
+                                    "defaultValue": "State"
+                                }
+                            ]
+                        }, {
+                            "name": "Vessel",
+                            "expression": {
+                                "type": "Reference",
+                                "reference": {
+                                    "type": "Empty"
+                                }
+                            },
+                            "attributes": [{
+                                    "name": "Temperature_DegC",
+                                    "expression": {
+                                        "type": "JavaScript",
+                                        "expression": "return Math.random();"
+                                    },
+                                    "defaultValue": 123.4
+                                }, {
+                                    "name": "Culture_pH",
+                                    "expression": {
+                                        "type": "JavaScript",
+                                        "expression": "return Math.random();"
+                                    },
+                                    "defaultValue": 5.1
+                                }, {
+                                    "name": "Agitator_Speed_RPM",
+                                    "expression": {
+                                        "type": "JavaScript",
+                                        "expression": "return Math.random();"
+                                    },
+                                    "defaultValue": 123.4
+                                }, {
+                                    "name": "Pressure_PSI",
+                                    "expression": {
+                                        "type": "JavaScript",
+                                        "expression": "return Math.random();"
+                                    },
+                                    "defaultValue": 123.4
+                                }
+                            ]
+                        }, {
+                            "name": "Feed",
+                            "expression": {
+                                "type": "Reference",
+                                "reference": {
+                                    "type": "Empty"
+                                }
+                            },
+                            "attributes": [{
+                                    "name": "Nutrient1_Flow_ml_Min",
+                                    "expression": {
+                                        "type": "JavaScript",
+                                        "expression": "return Math.random();"
+                                    },
+                                    "defaultValue": 123.4
+                                }, {
+                                    "name": "Nutrient1_Status",
+                                    "expression": {
+                                        "type": "JavaScript",
+                                        "expression": "return Math.random();"
+                                    },
+                                    "defaultValue": "Nutriest1Status"
+                                }, {
+                                    "name": "Nutrient2_Flow_ml_Min",
+                                    "expression": {
+                                        "type": "JavaScript",
+                                        "expression": "return Math.random();"
+                                    },
+                                    "defaultValue": 1234.5
+                                }, {
+                                    "name": "Nutrient2_Status",
+                                    "expression": {
+                                        "type": "JavaScript",
+                                        "expression": "return Math.random();"
+                                    },
+                                    "defaultValue": "Nutrient2Status"
+                                }, {
+                                    "name": "Media_Flow_L_Hr",
+                                    "expression": {
+                                        "type": "JavaScript",
+                                        "expression": "return Math.random();"
+                                    },
+                                    "defaultValue": 123.4
+                                }, {
+                                    "name": "Media_Status",
+                                    "expression": {
+                                        "type": "JavaScript",
+                                        "expression": "return Math.random();"
+                                    },
+                                    "defaultValue": "MediaStatus"
+                                }
+                            ]
+                        }, {
+                            "name": "Mass_Balance",
+                            "expression": {
+                                "type": "Reference",
+                                "reference": {
+                                    "type": "Empty"
+                                }
+                            },
+                            "attributes": [{
+                                    "name": "Weight_kg",
+                                    "expression": {
+                                        "type": "JavaScript",
+                                        "expression": "return Math.random();"
+                                    },
+                                    "defaultValue": 123.4
+                                }, {
+                                    "name": "Air_Flow_SLPM",
+                                    "expression": {
+                                        "type": "JavaScript",
+                                        "expression": "return Math.random();"
+                                    },
+                                    "defaultValue": 123.4
+                                }, {
+                                    "name": "PureO_Flow_SLPM",
+                                    "expression": {
+                                        "type": "JavaScript",
+                                        "expression": "return Math.random();"
+                                    },
+                                    "defaultValue": 123.4
+                                }, {
+                                    "name": "CO2_Flow_SLPM",
+                                    "expression": {
+                                        "type": "JavaScript",
+                                        "expression": "return Math.random();"
+                                    },
+                                    "defaultValue": 123.4
+                                }, {
+                                    "name": "Air_Valve_Pct",
+                                    "expression": {
+                                        "type": "JavaScript",
+                                        "expression": "return Math.random();"
+                                    },
+                                    "defaultValue": 123.4
+                                }, {
+                                    "name": "PureO_Valve_Pct",
+                                    "expression": {
+                                        "type": "JavaScript",
+                                        "expression": "return Math.random();"
+                                    },
+                                    "defaultValue": 123.4
+                                }, {
+                                    "name": "CO2_Valve_Pct",
+                                    "expression": {
+                                        "type": "JavaScript",
+                                        "expression": "return Math.random();"
+                                    },
+                                    "defaultValue": 123.4
+                                }
+                            ]
+                        }
+                    ],
+                    "parameters": {
+                        "type": "EmptyParameters"
+                    }
+                }, {
+                    "name": "MediaPrep_SUM_Instance_SUM500",
+                    "tags": [],
+                    "model": "MediaPrep_SUM",
+                    "rootValueAs": "Object",
+                    "template": {
+                        "type": "Off"
+                    },
+                    "executeMode": "V4",
+                    "initExpression": "",
+                    "attributes": [{
+                            "name": "Time_Ref",
+                            "expression": {
+                                "type": "Reference",
+                                "reference": {
+                                    "type": "Empty"
+                                }
+                            },
+                            "attributes": [{
+                                    "name": "Data_Set_ID",
+                                    "expression": {
+                                        "type": "Reference",
+                                        "reference": {
+                                            "type": "Empty"
+                                        }
+                                    },
+                                    "defaultValue": 123
+                                }, {
+                                    "name": "Timestamp_Origin",
+                                    "expression": {
+                                        "type": "JavaScript",
+                                        "expression": "return (Date.now());"
+                                    }
+                                }, {
+                                    "name": "Seconds_Eclipsed",
+                                    "expression": {
+                                        "type": "Reference",
+                                        "reference": {
+                                            "type": "Empty"
+                                        }
+                                    },
+                                    "defaultValue": 123
+                                }
+                            ]
+                        }, {
+                            "name": "Main",
+                            "expression": {
+                                "type": "Reference",
+                                "reference": {
+                                    "type": "Empty"
+                                }
+                            },
+                            "attributes": [{
+                                    "name": "Batch_ID",
+                                    "expression": {
+                                        "type": "Reference",
+                                        "reference": {
+                                            "type": "Empty"
+                                        }
+                                    },
+                                    "defaultValue": "BatchID"
+                                }, {
+                                    "name": "Recipe",
+                                    "expression": {
+                                        "type": "Reference",
+                                        "reference": {
+                                            "type": "Empty"
+                                        }
+                                    },
+                                    "defaultValue": "Recipe"
+                                }, {
+                                    "name": "Formula",
+                                    "expression": {
+                                        "type": "Reference",
+                                        "reference": {
+                                            "type": "Empty"
+                                        }
+                                    },
+                                    "defaultValue": "Formula"
+                                }, {
+                                    "name": "Phase",
+                                    "expression": {
+                                        "type": "Reference",
+                                        "reference": {
+                                            "type": "Empty"
+                                        }
+                                    },
+                                    "defaultValue": "Phase"
+                                }, {
+                                    "name": "State",
+                                    "expression": {
+                                        "type": "Reference",
+                                        "reference": {
+                                            "type": "Empty"
+                                        }
+                                    },
+                                    "defaultValue": "State"
+                                }
+                            ]
+                        }, {
+                            "name": "Process",
+                            "expression": {
+                                "type": "Reference",
+                                "reference": {
+                                    "type": "Empty"
+                                }
+                            },
+                            "attributes": [{
+                                    "name": "Culture_pH",
+                                    "expression": {
+                                        "type": "JavaScript",
+                                        "expression": "return Math.random();"
+                                    },
+                                    "defaultValue": 123.4
+                                }, {
+                                    "name": "Weight_kg",
+                                    "expression": {
+                                        "type": "JavaScript",
+                                        "expression": "return Math.random();"
+                                    },
+                                    "defaultValue": 123.4
+                                }, {
+                                    "name": "Temperature_DegC",
+                                    "expression": {
+                                        "type": "JavaScript",
+                                        "expression": "return Math.random();"
+                                    },
+                                    "defaultValue": 123.4
+                                }, {
+                                    "name": "Agitator_Speed_RPM",
+                                    "expression": {
+                                        "type": "JavaScript",
+                                        "expression": "return Math.random();"
+                                    },
+                                    "defaultValue": 123.4
+                                }, {
+                                    "name": "Dosing_Flow_L_Min",
+                                    "expression": {
+                                        "type": "JavaScript",
+                                        "expression": "return Math.random();"
+                                    },
+                                    "defaultValue": 123.4
+                                }
+                            ]
+                        }
+                    ],
+                    "parameters": {
+                        "type": "EmptyParameters"
+                    }
+                }, {
+                    "name": "Purify_CHR_Instance_CHROM1",
+                    "tags": [],
+                    "model": "Purify_CHR",
+                    "rootValueAs": "Object",
+                    "template": {
+                        "type": "Off"
+                    },
+                    "executeMode": "V4",
+                    "initExpression": "",
+                    "attributes": [{
+                            "name": "Time_Ref",
+                            "expression": {
+                                "type": "Reference",
+                                "reference": {
+                                    "type": "Empty"
+                                }
+                            },
+                            "attributes": [{
+                                    "name": "Data_Set_ID",
+                                    "expression": {
+                                        "type": "Reference",
+                                        "reference": {
+                                            "type": "Empty"
+                                        }
+                                    },
+                                    "defaultValue": 123
+                                }, {
+                                    "name": "Timestamp_Origin",
+                                    "expression": {
+                                        "type": "JavaScript",
+                                        "expression": "return (Date.now());"
+                                    }
+                                }, {
+                                    "name": "Seconds_Eclipsed",
+                                    "expression": {
+                                        "type": "Reference",
+                                        "reference": {
+                                            "type": "Empty"
+                                        }
+                                    },
+                                    "defaultValue": 123
+                                }
+                            ]
+                        }, {
+                            "name": "Main",
+                            "expression": {
+                                "type": "Reference",
+                                "reference": {
+                                    "type": "Empty"
+                                }
+                            },
+                            "attributes": [{
+                                    "name": "Batch_ID",
+                                    "expression": {
+                                        "type": "Reference",
+                                        "reference": {
+                                            "type": "Empty"
+                                        }
+                                    },
+                                    "defaultValue": "BatchID"
+                                }, {
+                                    "name": "Recipe",
+                                    "expression": {
+                                        "type": "Reference",
+                                        "reference": {
+                                            "type": "Empty"
+                                        }
+                                    },
+                                    "defaultValue": "Recipe"
+                                }, {
+                                    "name": "Formula",
+                                    "expression": {
+                                        "type": "Reference",
+                                        "reference": {
+                                            "type": "Empty"
+                                        }
+                                    },
+                                    "defaultValue": "Formula"
+                                }, {
+                                    "name": "Phase",
+                                    "expression": {
+                                        "type": "Reference",
+                                        "reference": {
+                                            "type": "Empty"
+                                        }
+                                    },
+                                    "defaultValue": "Phase"
+                                }, {
+                                    "name": "State",
+                                    "expression": {
+                                        "type": "Reference",
+                                        "reference": {
+                                            "type": "Empty"
+                                        }
+                                    },
+                                    "defaultValue": "State"
+                                }
+                            ]
+                        }, {
+                            "name": "Process",
+                            "expression": {
+                                "type": "Reference",
+                                "reference": {
+                                    "type": "Empty"
+                                }
+                            },
+                            "attributes": [{
+                                    "name": "UV_Absorbance_AU",
+                                    "expression": {
+                                        "type": "JavaScript",
+                                        "expression": "return Math.random();"
+                                    },
+                                    "defaultValue": 123.4
+                                }, {
+                                    "name": "Conductivity_mS_cm",
+                                    "expression": {
+                                        "type": "JavaScript",
+                                        "expression": "return Math.random();"
+                                    },
+                                    "defaultValue": 123.4
+                                }, {
+                                    "name": "Culture_pH",
+                                    "expression": {
+                                        "type": "JavaScript",
+                                        "expression": "return Math.random();"
+                                    },
+                                    "defaultValue": 123.4
+                                }, {
+                                    "name": "Column_Pressure_bar",
+                                    "expression": {
+                                        "type": "JavaScript",
+                                        "expression": "return Math.random();"
+                                    },
+                                    "defaultValue": 123.4
+                                }, {
+                                    "name": "System_Pressure_bar",
+                                    "expression": {
+                                        "type": "JavaScript",
+                                        "expression": "return Math.random();"
+                                    },
+                                    "defaultValue": 123.4
+                                }, {
+                                    "name": "Flow_Rate_L_hr",
+                                    "expression": {
+                                        "type": "JavaScript",
+                                        "expression": "return Math.random();"
+                                    },
+                                    "defaultValue": 123.4
+                                }, {
+                                    "name": "Product_Collection_Status",
+                                    "expression": {
+                                        "type": "JavaScript",
+                                        "expression": "return Math.random();"
+                                    },
+                                    "defaultValue": true
+                                }, {
+                                    "name": "Waste_Diversion_Status",
+                                    "expression": {
+                                        "type": "Reference",
+                                        "reference": {
+                                            "type": "Empty"
+                                        }
+                                    },
+                                    "defaultValue": false
+                                }, {
+                                    "name": "System_Temperature_DegC",
+                                    "expression": {
+                                        "type": "JavaScript",
+                                        "expression": "return Math.random();"
+                                    },
+                                    "defaultValue": 123.4
+                                }
+                            ]
+                        }
+                    ],
+                    "parameters": {
+                        "type": "EmptyParameters"
+                    }
+                }
+            ]
 		},
 		"conditions": [],
 		"functions": [],
